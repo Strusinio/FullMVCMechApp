@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MechAppProjectModelStoreContainer" CdmEntityContainer="MechAppProjectEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MechAppProjectModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="StreetNbr" ColumnName="StreetNbr" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="PhoneNbr" ColumnName="PhoneNbr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

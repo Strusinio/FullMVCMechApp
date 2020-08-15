@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MechAppProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MechAppProject.Customer.Customers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StreetNbr" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNbr" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MechAppProjectModelStoreContainer">
+    <EntitySet Name="Customers" EntityType="Self.Customers" store:Type="Tables" store:Schema="Customer">
+      <DefiningQuery>SELECT 
+    [Customers].[CustomerId] AS [CustomerId], 
+    [Customers].[Login] AS [Login], 
+    [Customers].[Password] AS [Password], 
+    [Customers].[Email] AS [Email], 
+    [Customers].[Name] AS [Name], 
+    [Customers].[Surname] AS [Surname], 
+    [Customers].[City] AS [City], 
+    [Customers].[Street] AS [Street], 
+    [Customers].[StreetNbr] AS [StreetNbr], 
+    [Customers].[ZipCode] AS [ZipCode], 
+    [Customers].[PhoneNbr] AS [PhoneNbr]
+    FROM [Customer].[Customers] AS [Customers]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

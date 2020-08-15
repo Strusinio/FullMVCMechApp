@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MechAppProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StreetNbr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNbr" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="ChatId" />
+          </Key>
+          <Property Name="ChatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="WorkshopId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceEvent">
+          <Key>
+            <PropertyRef Name="ServiceEventId" />
+          </Key>
+          <Property Name="ServiceEventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkshopServices">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkshopId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="text" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="DurationInHrs" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="DurationInMinutes" Type="int" Nullable="false" />
+          <Property Name="PriceDecimal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workshops">
+          <Key>
+            <PropertyRef Name="WorkshopId" />
+          </Key>
+          <Property Name="WorkshopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkshopName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNbr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StreetNbr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Car__CustomerId__108B795B">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Car" Type="Self.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chat__CustomerId__09DE7BCC">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chat__WorkshopId__0AD2A005">
+          <End Role="Workshops" Type="Self.Workshops" Multiplicity="1" />
+          <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workshops">
+              <PropertyRef Name="WorkshopId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="WorkshopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceEv__Custo__2E1BDC42">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="ServiceEvent" Type="Self.ServiceEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="ServiceEvent">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceEv__Servi__2F10007B">
+          <End Role="WorkshopServices" Type="Self.WorkshopServices" Multiplicity="1" />
+          <End Role="ServiceEvent" Type="Self.ServiceEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkshopServices">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServiceEvent">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkshopS__Works__1ED998B2">
+          <End Role="Workshops" Type="Self.Workshops" Multiplicity="1" />
+          <End Role="WorkshopServices" Type="Self.WorkshopServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workshops">
+              <PropertyRef Name="WorkshopId" />
+            </Principal>
+            <Dependent Role="WorkshopServices">
+              <PropertyRef Name="WorkshopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MechAppProjectModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="Customer" store:Type="Tables" />
+          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceEvent" EntityType="Self.ServiceEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkshopServices" EntityType="Self.WorkshopServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workshops" EntityType="Self.Workshops" Schema="Workshop" store:Type="Tables" />
+          <AssociationSet Name="FK__Car__CustomerId__108B795B" Association="Self.FK__Car__CustomerId__108B795B">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Car" EntitySet="Car" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chat__CustomerId__09DE7BCC" Association="Self.FK__Chat__CustomerId__09DE7BCC">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Chat" EntitySet="Chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chat__WorkshopId__0AD2A005" Association="Self.FK__Chat__WorkshopId__0AD2A005">
+            <End Role="Workshops" EntitySet="Workshops" />
+            <End Role="Chat" EntitySet="Chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceEv__Custo__2E1BDC42" Association="Self.FK__ServiceEv__Custo__2E1BDC42">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="ServiceEvent" EntitySet="ServiceEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceEv__Servi__2F10007B" Association="Self.FK__ServiceEv__Servi__2F10007B">
+            <End Role="WorkshopServices" EntitySet="WorkshopServices" />
+            <End Role="ServiceEvent" EntitySet="ServiceEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkshopS__Works__1ED998B2" Association="Self.FK__WorkshopS__Works__1ED998B2">
+            <End Role="Workshops" EntitySet="Workshops" />
+            <End Role="WorkshopServices" EntitySet="WorkshopServices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MechAppProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StreetNbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Chats" Relationship="MechAppProjectModel.FK__Chat__CustomerId__09DE7BCC" FromRole="Customer" ToRole="Chat" />
+          <NavigationProperty Name="Cars" Relationship="MechAppProjectModel.FK__Car__CustomerId__108B795B" FromRole="Customer" ToRole="Car" />
+          <NavigationProperty Name="ServiceEvents" Relationship="MechAppProjectModel.FK__ServiceEv__Custo__2E1BDC42" FromRole="Customer" ToRole="ServiceEvent" />
+        </EntityType>
+        <EntityContainer Name="MechAppProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Workshops" EntityType="MechAppProjectModel.Workshop" />
+          <EntitySet Name="Chats" EntityType="MechAppProjectModel.Chat" />
+          <AssociationSet Name="FK__Chat__CustomerId__09DE7BCC" Association="MechAppProjectModel.FK__Chat__CustomerId__09DE7BCC">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chat__WorkshopId__0AD2A005" Association="MechAppProjectModel.FK__Chat__WorkshopId__0AD2A005">
+            <End Role="Workshop" EntitySet="Workshops" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+          <EntitySet Name="Cars" EntityType="MechAppProjectModel.Car" />
+          <AssociationSet Name="FK__Car__CustomerId__108B795B" Association="MechAppProjectModel.FK__Car__CustomerId__108B795B">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <EntitySet Name="WorkshopServices" EntityType="MechAppProjectModel.WorkshopService" />
+          <AssociationSet Name="FK__WorkshopS__Works__1ED998B2" Association="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2">
+            <End Role="Workshop" EntitySet="Workshops" />
+            <End Role="WorkshopService" EntitySet="WorkshopServices" />
+          </AssociationSet>
+          <EntitySet Name="ServiceEvents" EntityType="MechAppProjectModel.ServiceEvent" />
+          <AssociationSet Name="FK__ServiceEv__Custo__2E1BDC42" Association="MechAppProjectModel.FK__ServiceEv__Custo__2E1BDC42">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ServiceEvent" EntitySet="ServiceEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceEv__Servi__2F10007B" Association="MechAppProjectModel.FK__ServiceEv__Servi__2F10007B">
+            <End Role="WorkshopService" EntitySet="WorkshopServices" />
+            <End Role="ServiceEvent" EntitySet="ServiceEvents" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Workshop">
+          <Key>
+            <PropertyRef Name="WorkshopId" />
+          </Key>
+          <Property Name="WorkshopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkshopName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNbr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetNbr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Chats" Relationship="MechAppProjectModel.FK__Chat__WorkshopId__0AD2A005" FromRole="Workshop" ToRole="Chat" />
+          <NavigationProperty Name="WorkshopServices" Relationship="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" FromRole="Workshop" ToRole="WorkshopService" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="ChatId" />
+          </Key>
+          <Property Name="ChatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="WorkshopId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="MechAppProjectModel.FK__Chat__CustomerId__09DE7BCC" FromRole="Chat" ToRole="Customer" />
+          <NavigationProperty Name="Workshop" Relationship="MechAppProjectModel.FK__Chat__WorkshopId__0AD2A005" FromRole="Chat" ToRole="Workshop" />
+        </EntityType>
+        <Association Name="FK__Chat__CustomerId__09DE7BCC">
+          <End Type="MechAppProjectModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MechAppProjectModel.Chat" Role="Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chat__WorkshopId__0AD2A005">
+          <End Type="MechAppProjectModel.Workshop" Role="Workshop" Multiplicity="1" />
+          <End Type="MechAppProjectModel.Chat" Role="Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workshop">
+              <PropertyRef Name="WorkshopId" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="WorkshopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EngineType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="MechAppProjectModel.FK__Car__CustomerId__108B795B" FromRole="Car" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK__Car__CustomerId__108B795B">
+          <End Type="MechAppProjectModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MechAppProjectModel.Car" Role="Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WorkshopService">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkshopId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="DurationInHrs" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DurationInMinutes" Type="Int32" Nullable="false" />
+          <Property Name="PriceDecimal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Workshop" Relationship="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" FromRole="WorkshopService" ToRole="Workshop" />
+          <NavigationProperty Name="ServiceEvents" Relationship="MechAppProjectModel.FK__ServiceEv__Servi__2F10007B" FromRole="WorkshopService" ToRole="ServiceEvent" />
+        </EntityType>
+        <Association Name="FK__WorkshopS__Works__1ED998B2">
+          <End Type="MechAppProjectModel.Workshop" Role="Workshop" Multiplicity="1" />
+          <End Type="MechAppProjectModel.WorkshopService" Role="WorkshopService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workshop">
+              <PropertyRef Name="WorkshopId" />
+            </Principal>
+            <Dependent Role="WorkshopService">
+              <PropertyRef Name="WorkshopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ServiceEvent">
+          <Key>
+            <PropertyRef Name="ServiceEventId" />
+          </Key>
+          <Property Name="ServiceEventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="MechAppProjectModel.FK__ServiceEv__Custo__2E1BDC42" FromRole="ServiceEvent" ToRole="Customer" />
+          <NavigationProperty Name="WorkshopService" Relationship="MechAppProjectModel.FK__ServiceEv__Servi__2F10007B" FromRole="ServiceEvent" ToRole="WorkshopService" />
+        </EntityType>
+        <Association Name="FK__ServiceEv__Custo__2E1BDC42">
+          <End Type="MechAppProjectModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MechAppProjectModel.ServiceEvent" Role="ServiceEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="ServiceEvent">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceEv__Servi__2F10007B">
+          <End Type="MechAppProjectModel.WorkshopService" Role="WorkshopService" Multiplicity="1" />
+          <End Type="MechAppProjectModel.ServiceEvent" Role="ServiceEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkshopService">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServiceEvent">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MechAppProjectModelStoreContainer" CdmEntityContainer="MechAppProjectEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MechAppProjectModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="StreetNbr" ColumnName="StreetNbr" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="PhoneNbr" ColumnName="PhoneNbr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workshops">
+            <EntityTypeMapping TypeName="MechAppProjectModel.Workshop">
+              <MappingFragment StoreEntitySet="Workshops">
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="StreetNbr" ColumnName="StreetNbr" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PhoneNbr" ColumnName="PhoneNbr" />
+                <ScalarProperty Name="OwerName" ColumnName="OwerName" />
+                <ScalarProperty Name="WorkshopName" ColumnName="WorkshopName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="MechAppProjectModel.Chat">
+              <MappingFragment StoreEntitySet="Chat">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="MechAppProjectModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkshopServices">
+            <EntityTypeMapping TypeName="MechAppProjectModel.WorkshopService">
+              <MappingFragment StoreEntitySet="WorkshopServices">
+                <ScalarProperty Name="PriceDecimal" ColumnName="PriceDecimal" />
+                <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DurationInHrs" ColumnName="DurationInHrs" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceEvents">
+            <EntityTypeMapping TypeName="MechAppProjectModel.ServiceEvent">
+              <MappingFragment StoreEntitySet="ServiceEvent">
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ServiceEventId" ColumnName="ServiceEventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

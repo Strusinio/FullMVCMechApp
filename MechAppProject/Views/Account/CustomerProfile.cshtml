@@ -1,0 +1,71 @@
+﻿@model MechAppProject.Models.CustomerModel
+
+@{
+    ViewBag.Title = "CustomerProfile";
+}
+
+<h2>Customer profile</h2>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Login)
+            @Model.Login
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Password)
+            @Model.Password
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Email)
+            @Model.Email
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Name)
+            @Model.Name
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Surname)
+            @Model.Surname
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.City)
+            @Model.City
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Street)
+            @Model.Street
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.StreetNbr)
+            @Model.StreetNbr
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.ZipCode)
+            @Model.ZipCode
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.PhoneNbr)
+            @Model.PhoneNbr
+        </td>
+    </tr>
+</table>
+
+

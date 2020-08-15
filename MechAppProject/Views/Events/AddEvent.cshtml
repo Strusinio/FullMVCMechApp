@@ -1,0 +1,90 @@
+﻿@model MechAppProject.Models.AddEventModel
+
+@{
+    ViewBag.Title = "AddEvent";
+}
+
+<h2>Zarezerwuj termin</h2>
+
+@using (Html.BeginForm("AddEvent", "Events", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.CustomerCarsSelectList)
+        @Html.DropDownListFor(x => x.CustomerCar.Value, Model.CustomerCarsSelectList, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.WorkshopServicesSelectList)
+        @Html.DropDownListFor(x => x.WorkshopService.Value, Model.WorkshopServicesSelectList, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.ServiceDate)
+        @Html.TextBoxFor(x => x.ServiceDate, new { @class = "form-control datepicker", placeholder = "Wybierz datę..." })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.ServiceHourSelectList)
+        @Html.DropDownListFor(x => x.ServiceHours.Value, Model.ServiceHourSelectList, new { @class = "form-control" })
+    </div>
+
+    <button class="btn btn-default" type="submit">Zarezerwuj</button>
+}
+
+<div class="event-calendar" id="event-calendar-id"></div>
+
+<script>
+    var calendarEvents = [];
+
+    $(function () {
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker(); //Initialise any date pickers
+
+            calendarEvents = @(Html.Raw(Json.Encode(Model.CalendarEventsJson)));
+
+            calendarEvents.forEach(function (entry) {
+                entry.startDate = new Date(parseInt(entry.startDate.replace("/Date(", "").replace(")/",""), 10));
+                entry.endDate = new Date(parseInt(entry.endDate.replace("/Date(", "").replace(")/",""), 10));
+            });
+
+            $('#event-calendar-id').simpleCalendar({
+                disableEmptyDetails: true,
+                events: calendarEvents,
+
+                onDateSelect: function (date, events) {
+                var eventsEl = $('.event-wrapper > .event');
+
+                eventsEl.each(function (index) {
+                    var eventHour = $(this).find('.event-hour');
+
+                    var startMinutes = new Date(events[index].startDate).getMinutes();
+                    if (startMinutes < 10) {
+                        startMinutes = "0" + startMinutes.toString();
+                    }
+
+                    var startHours = new Date(events[index].startDate).getHours().toString() + ":" + startMinutes;
+
+                    var endMinutes = new Date(events[index].endDate).getMinutes();
+                    if (endMinutes < 10) {
+                        endMinutes = "0" + endMinutes.toString();
+                    }
+
+                    var endHours = new Date(events[index].endDate).getHours().toString() + ":" + endMinutes;
+
+                    eventHour.html(startHours + " - " + endHours);
+                });
+            }
+
+        });
+        });
+    });
+</script>
+
+<style>
+    .event-calendar {
+        margin-top: 20px;
+    }
+</style>
+
+

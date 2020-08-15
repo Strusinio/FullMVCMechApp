@@ -1,0 +1,41 @@
+﻿@using MechAppProject.Models
+
+@model List<CarModel>
+
+@{
+    ViewBag.Title = "YourCarDetails";
+}
+
+<h2>Lista Twoich samochodów: </h2>
+
+@foreach (var carYours in Model)
+{
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => carYours.Brand)
+                @carYours.Brand
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => carYours.Model)
+                @carYours.Model
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => carYours.EngineType)
+                @carYours.EngineType
+            </div>
+            
+        </td>
+    </tr>
+    <div style="margin-top: 50px;"></div>
+}
+
+

@@ -1,0 +1,48 @@
+﻿@using MechAppProject.Models
+
+@model List<WorkshopModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista warsztatów</h2>
+
+@foreach (var workshop in Model)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-50 workshop-list">
+                <div>@workshop.WorkshopName</div>
+                <div>@workshop.Email</div>
+                <div>@workshop.PhoneNbr</div>
+                <div>@workshop.City</div>
+                <div>@workshop.ZipCode</div>
+                <div>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>
+            </div>
+        </div>
+    </div>
+    if (Session["Login"] != null)
+    {
+        <div>@Html.ActionLink("Kontakt", "Index", "Chat", new { workshopId = workshop.WorkshopId }, null)</div>
+        <div>@Html.ActionLink("Zarezerwuj termin", "AddEvent", "Events", new { workshopId = workshop.WorkshopId }, null)</div>
+    }
+
+    <div>@Html.ActionLink("Lista Usług", "YourServices", "Workshop", new { workshopId = workshop.WorkshopId }, null)</div>
+
+
+    <div style="margin-top: 50px;"></div>
+}
+
+<style>
+    .workshop-list {
+        height: 16vh;
+        width: 75vh;
+        padding: 5px 5px;
+        background-color: lightskyblue;
+        border-top: 2px dashed;
+        border-left: 2px dashed;
+        border-right: 2px dashed;
+        border-bottom: 2px dashed;
+    }
+</style>

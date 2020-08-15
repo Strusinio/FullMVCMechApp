@@ -1,0 +1,95 @@
+﻿@model MechAppProject.Models.WorkshopModel
+
+@{
+    ViewBag.Title = "WorkshopProfileEdit";
+}
+
+<h2>Profile edit</h2>
+
+@using (Html.BeginForm("WorkshopProfileEdit", "Account", FormMethod.Post))
+{
+<fieldset>
+    <legend>
+        Edycja danych:
+    </legend>
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Email)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Email)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.WorkshopName)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.WorkshopName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.OwnerName)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.OwnerName)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.City)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.City)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Street)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Street)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.StreetNbr)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.StreetNbr)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.ZipCode)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.ZipCode)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.PhoneNbr)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PhoneNbr)
+            </td>
+        </tr>
+
+
+    </table>
+    <button type="submit">Zapisz</button>
+</fieldset>
+}

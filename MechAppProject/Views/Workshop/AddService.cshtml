@@ -1,0 +1,51 @@
+﻿@model MechAppProject.Models.WorkshopServiceModel
+
+@{
+    ViewBag.Title = "AddService";
+}
+
+<h2>AddService</h2>
+
+<div class="container">
+    @using (Html.BeginForm("AddService", "Workshop", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Description)
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Price)
+            @Html.EditorFor(x => x.Price, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.PriceDecimal)
+            @Html.EditorFor(x => x.PriceDecimal, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.DurationInHours)
+            @Html.EditorFor(x => x.DurationInHours, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.DurationInMinutes)
+            @Html.EditorFor(x => x.DurationInMinutes, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
+        </div>
+
+        <button type="submit" class="btn btn-default">Dodaj</button>
+    }
+</div>
+
+<style>
+    input {
+        margin-bottom: 20px;
+    }
+</style>
+

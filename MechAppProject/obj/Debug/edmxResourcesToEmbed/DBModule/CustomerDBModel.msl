@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MechAppProjectModelStoreContainer" CdmEntityContainer="MechAppProjectEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MechAppProjectModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="StreetNbr" ColumnName="StreetNbr" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="PhoneNbr" ColumnName="PhoneNbr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workshops">
+      <EntityTypeMapping TypeName="MechAppProjectModel.Workshop">
+        <MappingFragment StoreEntitySet="Workshops">
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="StreetNbr" ColumnName="StreetNbr" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PhoneNbr" ColumnName="PhoneNbr" />
+          <ScalarProperty Name="OwerName" ColumnName="OwerName" />
+          <ScalarProperty Name="WorkshopName" ColumnName="WorkshopName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chats">
+      <EntityTypeMapping TypeName="MechAppProjectModel.Chat">
+        <MappingFragment StoreEntitySet="Chat">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="MechAppProjectModel.Car">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkshopServices">
+      <EntityTypeMapping TypeName="MechAppProjectModel.WorkshopService">
+        <MappingFragment StoreEntitySet="WorkshopServices">
+          <ScalarProperty Name="PriceDecimal" ColumnName="PriceDecimal" />
+          <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DurationInHrs" ColumnName="DurationInHrs" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceEvents">
+      <EntityTypeMapping TypeName="MechAppProjectModel.ServiceEvent">
+        <MappingFragment StoreEntitySet="ServiceEvent">
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ServiceEventId" ColumnName="ServiceEventId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

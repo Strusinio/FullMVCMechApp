@@ -1,0 +1,65 @@
+﻿@using MechAppProject.Models
+
+@model List<WorkshopServiceModel>
+
+@{
+    ViewBag.Title = "WorkshopServiceModel";
+}
+
+<h2>Twoje usługi </h2>
+
+@foreach (var workshopService in Model)
+{
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => workshopService.Title)
+                @workshopService.Title
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => workshopService.Description)
+                @workshopService.Description
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => workshopService.Price)
+                @workshopService.Price
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => workshopService.PriceDecimal)
+                @workshopService.PriceDecimal
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => workshopService.DurationInHours)
+                @workshopService.DurationInHours
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => workshopService.DurationInMinutes)
+                @workshopService.DurationInMinutes
+            </div>
+        </td>
+    </tr>
+
+    <div style="margin-top: 50px;"></div>
+}
+
+

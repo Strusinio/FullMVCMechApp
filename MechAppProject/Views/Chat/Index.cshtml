@@ -1,0 +1,120 @@
+﻿@model MechAppProject.Models.ChatModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Czat</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 chat-list">
+            @if (Model.TemporaryChat)
+            {
+                <div style="color: red;">@Model.CurrentWorkshopName</div>
+            }
+
+            @foreach (var chatModel in Model.ChatRooms)
+            {
+                <div>
+                    <a href="@Url.Action("Index", "Chat", new { currentChat = chatModel.ChatId })">
+                        @if (!Model.IsCustomer)
+                        {
+                            @chatModel.CustomerName
+                        }
+                        else
+                        {
+                            @chatModel.WorkshopName
+                        }
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="col-xs-10 chat-window">
+            @foreach (var message in Model.Messages)
+            {
+                var email = Model.CurrentWorkshopEmail;
+
+                if (Model.IsCustomer)
+                {
+                    email = Model.CurrentCustomerEmail;
+                }
+
+                <div class="@(email == message.SentBy ? "message-out" : "message-in")">
+                    <div>@message.Date</div>
+                    <div>@message.Message</div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 chat-list-bottom">
+
+        </div>
+        <div class="col-xs-10 message-window">
+            @using (Html.BeginForm("SendMessage", "Chat", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.CurrentChatId)
+                @Html.HiddenFor(model => model.CurrentCustomerId)
+                @Html.HiddenFor(model => model.CurrentWorkshopId)
+                @Html.HiddenFor(model => model.CurrentCustomerEmail)
+                @Html.HiddenFor(model => model.CurrentWorkshopEmail)
+                @Html.TextAreaFor(model => model.CurrentMessage, new { @class = "text-area" })
+
+                if (Model.CurrentChatId > 0 || Model.TemporaryChat)
+                {
+                    <button class="btn btn-default" type="submit">Wyślij</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .chat-list {
+        height: 70vh;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+    }
+
+    .chat-list-bottom {
+        border-left: 1px solid black;
+        border-bottom: 1px solid black;
+        height: 6vh;
+    }
+
+    .chat-window {
+        border: 1px solid black;
+        height: 70vh;
+        overflow-y: scroll;
+    }
+
+    .text-area {
+        width: 100%;
+        display: block;
+        max-width: none;
+        border: 1px solid black;
+    }
+
+    .message-window {
+        padding: 0;
+    }
+
+    .message-out {
+        text-align: right;
+        padding: 8px 10px;
+        color: white;
+        background-color: cadetblue;
+        margin-bottom: 8px;
+        border-radius: 10px;
+    }
+
+    .message-in {
+        color: white;
+        padding: 8px 10px;
+        background-color: red;
+        margin-bottom: 8px;
+        border-radius: 10px;
+    }
+</style>
+
