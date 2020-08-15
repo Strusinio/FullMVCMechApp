@@ -30,6 +30,23 @@ namespace MechAppProject
                       "~/Content/site.css",
                       "~/Content/animated-event-calendar/dist/simple-calendar.css",
                       "~/Content/jquery-ui.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/WorkshopStyles").Include(
+                "~/Content/vendor/fontawesome-free/css/all.min.css",
+                "~/Content/vendor/datatables/dataTables.bootstrap4.css",
+                "~/Content/sb-admin-2.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/WorkshopScripts").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.bundle.js",
+                "~/Scripts/sb-admin-2.js",
+                "~/Content/vendor/datatables/jquery.dataTables.js",
+                "~/Content/vendor/datatables/dataTables.bootstrap4.js",
+                "~/Content/vendor/datatables/datatables-demo.js",
+                "~/Content/vendor/jquery-easing/jquery.easing.min.js",
+                "~/Content/vendor/chart.js/Chart.min.js",
+                "~/Content/js/demo/chart-area-demo.js",
+                "~/Content/js/demo/chart-pie-demo.js"));
         }
     }
 }

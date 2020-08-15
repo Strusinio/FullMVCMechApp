@@ -10,25 +10,13 @@ namespace MechAppProject.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult IndexWorkshop()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Witaj na stronie głównej!";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Workshop()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

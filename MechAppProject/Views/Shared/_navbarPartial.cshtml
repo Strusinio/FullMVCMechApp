@@ -1,0 +1,79 @@
+﻿<nav class="shd navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+    <div class="container">
+        @Html.ActionLink("MechApp", "Index", "Home", new { area = "" }, new
+        {
+            @class = "navbar-brand js-scroll-trigger",@*@href = "#page-top"*@})
+        <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+
+
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="@Url.Action("Search", "Home")"><i class="fas fa-search"></i></a></li>
+
+
+                @if (Session["Login"] == null && Session["LoginWorkshop"] == null)
+                {
+                    @*<li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Projekt", "Contact", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger", @href = "#portfolio" })</li>
+                        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Zespół", "About", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger", @href = "#about" })</li>
+                        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Kontakt", "Contact", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger", @href = "#contact" })</li>*@
+                }
+                @if (Session["Login"] != null)
+                {
+                    <li>@Html.ActionLink("Twoje Dane", "CustomerProfile", "Account")</li>
+                    <li>@Html.ActionLink("Edytuj Dane", "CustomerProfileEdit", "Account")</li>
+                    <li>@Html.ActionLink("Czat", "Index", "Chat")</li>
+                }
+                @if (Session["LoginWorkshop"] != null)
+                {
+                    <li>@Html.ActionLink("Czat", "Index", "Chat")</li>
+                    <li>@Html.ActionLink("Twoje Dane", "WorkshopProfile", "Account")</li>
+                    <li>@Html.ActionLink("Edytuj Dane", "WorkshopProfileEdit", "Account")</li>
+                }
+
+
+            </ul>
+            @Html.Partial("_loginPartial")
+
+        </div>
+    </div>
+
+</nav>
+
+@*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("MechApp", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li>@Html.ActionLink("Lista warsztatów", "Index", "Workshop")</li>
+                        @if (Session["Login"] == null && Session["LoginWorkshop"] == null)
+                        {
+                            <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("O aplikacji", "About", "Home")</li>
+                        }
+                        @if (Session["Login"] != null)
+                        {
+                            <li>@Html.ActionLink("Twoje Dane", "CustomerProfile", "Account")</li>
+                            <li>@Html.ActionLink("Edytuj Dane", "CustomerProfileEdit", "Account")</li>
+                            <li>@Html.ActionLink("Czat", "Index", "Chat")</li>
+                        }
+                        @if (Session["LoginWorkshop"] != null)
+                        {
+                            <li>@Html.ActionLink("Czat", "Index", "Chat")</li>
+                            <li>@Html.ActionLink("Twoje Dane", "WorkshopProfile", "Account")</li>
+                            <li>@Html.ActionLink("Edytuj Dane", "WorkshopProfileEdit", "Account")</li>
+                        }
+
+                    </ul>
+                    @Html.Partial("_loginPartial")
+                </div>
+            </div>
+    </div>*@

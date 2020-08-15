@@ -104,5 +104,9 @@ namespace MechAppProject.Controllers
 
             return View(model);
         }
+        public ActionResult Table()
+        {
+            return View();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@*<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -56,5 +56,44 @@
     @Scripts.Render("~/Content/animated-event-calendar")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+</body>
+</html>*@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MechApp</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/css/styles.css" rel="stylesheet">
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="~/Content/css/heading.css">
+    <link rel="stylesheet" href="~/Content/css/body.css">
+</head>
+
+<body>
+
+    @Html.Partial("_navbarPartial")
+
+    @RenderBody()
+
+    @Html.Partial("_footerPartial")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/vendor/animated-event-calendar")
+    @RenderSection("scripts", required: false)
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/Content/js/scripts.js"></script>
+
 </body>
 </html>
