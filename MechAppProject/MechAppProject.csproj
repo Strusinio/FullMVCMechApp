@@ -185,8 +185,10 @@
     <Content Include="Content\css\body.css" />
     <Content Include="Content\css\heading.css" />
     <Content Include="Content\css\styles.css" />
+    <Content Include="Content\css\chat.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\main.png" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\vendor\animated-event-calendar\assets\demo.css" />

@@ -2,22 +2,104 @@
 
 @if (Session["Login"] != null)
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Witaj " + (Session["Login"] as SessionModel).UserLogin, "Index", "Home", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
-        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Logout", "CustomerLogout", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
-    </ul>
-}
+
+        <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="@Url.Action("CustomerProfile","Account")">
+
+                <span class="">
+                    Witaj @((Session["Login"] as SessionModel).UserLogin)
+                </span>
+            </a>
+        </li>
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow nav-item mx-0 mx-lg-1">
+            <a class="nav-link dropdown-toggle nav-link py-3 px-0 px-lg-3 rounded" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="@Url.Action("CustomerProfile","Account")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Profil
+                </a>
+                <a class="dropdown-item" href="@Url.Action("CustomerProfileEdit","Account")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Profil Edit
+                </a>
+                <a class="dropdown-item" href="@Url.Action("AddNewCar","AddCar")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Dodaj samochod
+                </a>
+                <a class="dropdown-item" href="@Url.Action("Index","Chat")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Wiadomości
+                </a>
+                <a class="dropdown-item" href="@Url.Action("YourCarDetails","AddCar")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Twoje samochody
+                </a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                    Logout
+                </a>
+            </div>
+        </li>
+        }
 else if (Session["LoginWorkshop"] != null)
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Witaj " + (Session["LoginWorkshop"] as SessionModel).WorkshopLogin, "Index", "Home", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
-        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("LogoutWorkshop", "LogoutWorkshop", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
-    </ul>
+        <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="@Url.Action("CustomerProfile","Account")">
+
+                <span class="">
+                    Witaj @((Session["LoginWorkshop"] as SessionModel).WorkshopLogin)
+                </span>
+            </a>
+        </li>
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow nav-item mx-0 mx-lg-1">
+            <a class="nav-link dropdown-toggle nav-link py-3 px-0 px-lg-3 rounded" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="@Url.Action("Workshop","Home")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Panel
+                </a>
+                <a class="dropdown-item" href="@Url.Action("WorkshopProfile", "Account")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Profil
+                </a>
+                
+                <a class="dropdown-item" href="@Url.Action("WorkshopProfileEdit","Account")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Zmień dane workshop
+                </a>
+                
+                <a class="dropdown-item" href="@Url.Action("AddService","Workshop")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Dodaj usługi
+                </a>
+                
+                <a class="dropdown-item" href="@Url.Action("YourServices","Workshop")">
+                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
+                    Twoje usługi
+                </a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                    Logout
+                </a>
+            </div>
+        </li>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Logowanie", "CustomerLogin", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
-        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Rejestracja", "CustomerRegister", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
-    </ul>
+    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Logowanie", "CustomerLogin", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Rejestracja", "CustomerRegister", "Account", null, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
 }
+
+

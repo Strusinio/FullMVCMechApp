@@ -161,22 +161,3 @@
         </div>
     </div>
 </section>
-
-@if (Session["Login"] != null)
-{
-
-    <button type="button" onclick="location.href='@Url.Action("CustomerProfile","Account")'">Dane user</button>
-    <button type="button" onclick="location.href='@Url.Action("CustomerProfileEdit","Account")'">Zmień dane user</button>
-    <button type="button" onclick="location.href='@Url.Action("Index","Workshop")'">Lista warsztatów</button>
-    <button type="button" onclick="location.href='@Url.Action("AddNewCar","AddCar")'">Dodaj Pojazd</button>
-    <button type="button" onclick="location.href='@Url.Action("YourCarDetails","AddCar")'">Twoje Pojazd</button>
-
-}
-@if (Session["LoginWorkshop"] != null)
-{
-    <button type="button" onclick="location.href='@Url.Action("WorkshopProfile","Account")'">Dane workshop</button>
-    <button type="button" onclick="location.href='@Url.Action("WorkshopProfileEdit","Account")'">Zmień dane workshop</button>
-    <button type="button" onclick="location.href='@Url.Action("AddService","Workshop")'">Dodaj usługi</button>
-    <button type="button" onclick="location.href='@Url.Action("YourServices","Workshop")'">Twoje usługi</button>
-
-}
