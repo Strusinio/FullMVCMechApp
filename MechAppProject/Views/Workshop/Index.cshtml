@@ -3,46 +3,79 @@
 @model List<WorkshopModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "WorkshopList";
 }
 
 <h2>Lista warsztatów</h2>
 
+<div class="container ">
+
+
 @foreach (var workshop in Model)
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-50 workshop-list">
-                <div>@workshop.WorkshopName</div>
-                <div>@workshop.Email</div>
-                <div>@workshop.PhoneNbr</div>
-                <div>@workshop.City</div>
-                <div>@workshop.ZipCode</div>
-                <div>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+            <div class="col-3">
+                <img src="http://maxi-service.pl/wp-content/uploads/2016/10/mechanik-serwis-warsztat.jpg" class="img-fluid rounded" alt="...">
+            </div>
+                <div class="col-5">
+                    <div class="">
+                        <h4 class="card-title">@workshop.WorkshopName</h4> 
+                        <h6 class="card-subtitle mb-2 text-muted">@workshop.City</h6>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <span class="badge badge-secondary">Skoda</span> <span class="badge badge-secondary">Opony</span>
+                        
+
+                        <div><b>email: </b>@workshop.Email</div>
+                        <div><b>numer: </b>@workshop.PhoneNbr</div>
+
+                        <div><b>kod pocztowy: </b>@workshop.ZipCode</div>
+                        <div><b>ulica: </b>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>
+                    </div>
+                </div>
+                    <div class="col-4 d-flex justify-content-end align-items-end">
+                        <div>@Html.ActionLink("Lista Usług", "YourServices", "Workshop", new {workshopId = workshop.WorkshopId}, new {@class = "m-1 btn btn-secondary "})</div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            K
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div><b>email: </b>@workshop.Email</div>
+                                        <div><b>numer: </b>@workshop.PhoneNbr</div>
+
+                                        <div><b>kod pocztowy: </b>@workshop.ZipCode</div>
+                                        <div><b>ulica: </b>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        @if (Session["Login"] != null)
+                        {
+                            <div>@Html.ActionLink("Kontakt", "Index", "Chat", new {workshopId = workshop.WorkshopId}, new {@class = "m-1 btn btn-primary"})</div>
+                            <div>@Html.ActionLink("Zarezerwuj termin", "AddEvent", "Events", new {workshopId = workshop.WorkshopId}, new {@class = "m-1 btn btn-primary"})</div>
+                        }
+                    </div>
+
             </div>
         </div>
     </div>
-    if (Session["Login"] != null)
-    {
-        <div>@Html.ActionLink("Kontakt", "Index", "Chat", new { workshopId = workshop.WorkshopId }, null)</div>
-        <div>@Html.ActionLink("Zarezerwuj termin", "AddEvent", "Events", new { workshopId = workshop.WorkshopId }, null)</div>
-    }
-
-    <div>@Html.ActionLink("Lista Usług", "YourServices", "Workshop", new { workshopId = workshop.WorkshopId }, null)</div>
-
 
     <div style="margin-top: 50px;"></div>
 }
 
-<style>
-    .workshop-list {
-        height: 16vh;
-        width: 75vh;
-        padding: 5px 5px;
-        background-color: lightskyblue;
-        border-top: 2px dashed;
-        border-left: 2px dashed;
-        border-right: 2px dashed;
-        border-bottom: 2px dashed;
-    }
-</style>
+</div>
