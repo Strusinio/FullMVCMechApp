@@ -27,42 +27,13 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                         <span class="badge badge-secondary">Skoda</span> <span class="badge badge-secondary">Opony</span>
-                        
 
-                        <div><b>email: </b>@workshop.Email</div>
-                        <div><b>numer: </b>@workshop.PhoneNbr</div>
-
-                        <div><b>kod pocztowy: </b>@workshop.ZipCode</div>
-                        <div><b>ulica: </b>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>
                     </div>
                 </div>
                     <div class="col-4 d-flex justify-content-end align-items-end">
-                        <div>@Html.ActionLink("Lista Usług", "YourServices", "Workshop", new {workshopId = workshop.WorkshopId}, new {@class = "m-1 btn btn-secondary "})</div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            K
-                        </button>
+                        <div>@Html.ActionLink("Profil", "Details", "Workshop", new { workshopId = workshop.WorkshopId }, new { @class = "m-1 btn btn-secondary " })</div>
+                        <div>@Html.ActionLink("Usługi", "ServiceDetails", "Workshop", new {workshopId = workshop.WorkshopId}, new {@class = "m-1 btn btn-secondary "})</div>
                         
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div><b>email: </b>@workshop.Email</div>
-                                        <div><b>numer: </b>@workshop.PhoneNbr</div>
-
-                                        <div><b>kod pocztowy: </b>@workshop.ZipCode</div>
-                                        <div><b>ulica: </b>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
 
                         @if (Session["Login"] != null)
                         {

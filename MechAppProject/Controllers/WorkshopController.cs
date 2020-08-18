@@ -2,7 +2,9 @@
 using MechAppProject.Models;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +12,8 @@ namespace MechAppProject.Controllers
 {
     public class WorkshopController : Controller
     {
+        private MechAppProjectEntities db = new MechAppProjectEntities();
+
         // GET: Workshop
         public ActionResult Index()
         {
@@ -72,6 +76,7 @@ namespace MechAppProject.Controllers
 
             return RedirectToAction("Index");
         }
+
         public ActionResult YourServices()
         {
             var model = new List<WorkshopServiceModel>();
@@ -104,9 +109,50 @@ namespace MechAppProject.Controllers
 
             return View(model);
         }
+
         public ActionResult Table()
         {
             return View();
         }
+
+        public ActionResult Details(int? workshopId)
+
+        {
+
+            if (workshopId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Workshop workshop = db.Workshops.Find(workshopId);
+
+            
+            if (workshop == null)
+            {
+                return HttpNotFound();
+            }
+            return View(workshop);
+        }
+
+        public ActionResult ServiceDetails(int? workshopId)
+
+        {
+
+            if (workshopId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Workshop workshop = db.Workshops.Find(workshopId);
+
+
+            if (workshop == null)
+            {
+                return HttpNotFound();
+            }
+            return View(workshop);
+        }
+
+
     }
 }

@@ -49,4 +49,11 @@ namespace MechAppProject.Models
 
        
     }
+
+    public class ProfileModel
+    {
+        public WorkshopModel WorkshopModel { get; set; }
+
+        public WorkshopServiceModel WorkshopServiceModel { get; set; }
+    }
 }

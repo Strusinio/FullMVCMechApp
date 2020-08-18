@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MechAppProject.DBModule.Workshop>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkshopName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNbr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetNbr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkshopName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNbr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreetNbr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkshopId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkshopId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkshopId })
+        </td>
+    </tr>
+}
+
+</table>

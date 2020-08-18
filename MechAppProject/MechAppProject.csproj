@@ -135,6 +135,8 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
+    <Compile Include="Controllers\WorkshopsController.cs" />
+    <Compile Include="Controllers\WorkshopServicesController.cs" />
     <Compile Include="DBModule\Car.cs">
       <DependentUpon>CustomerDBModel.tt</DependentUpon>
     </Compile>
@@ -2202,7 +2204,18 @@
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Shared\_WorkshopLayout.cshtml" />
     <Content Include="Views\Workshop\Table.cshtml" />
-    <Content Include="Views\Workshop\WorkshopView.cshtml" />
+    <Content Include="Views\Workshop\Details.cshtml" />
+    <Content Include="Views\Workshops\Create.cshtml" />
+    <Content Include="Views\Workshops\Delete.cshtml" />
+    <Content Include="Views\Workshops\Details.cshtml" />
+    <Content Include="Views\Workshops\Edit.cshtml" />
+    <Content Include="Views\Workshops\Index.cshtml" />
+    <Content Include="Views\Workshop\ServiceDetails.cshtml" />
+    <Content Include="Views\WorkshopServices\Create.cshtml" />
+    <Content Include="Views\WorkshopServices\Delete.cshtml" />
+    <Content Include="Views\WorkshopServices\Details.cshtml" />
+    <Content Include="Views\WorkshopServices\Edit.cshtml" />
+    <Content Include="Views\WorkshopServices\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

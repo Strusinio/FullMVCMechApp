@@ -14,7 +14,7 @@
         <AssociationConnector Association="MechAppProjectModel.FK__Car__CustomerId__108B795B" />
         <EntityTypeShape EntityType="MechAppProjectModel.WorkshopService" Width="1.5" PointX="11.25" PointY="0.875" />
         <AssociationConnector Association="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" />
-        <EntityTypeShape EntityType="MechAppProjectModel.ServiceEvent" Width="1.5" PointX="6.5" PointY="4.5" />
+        <EntityTypeShape EntityType="MechAppProjectModel.ServiceEvent" Width="1.5" PointX="7.125" PointY="5.125" />
         <AssociationConnector Association="MechAppProjectModel.FK__ServiceEv__Custo__2E1BDC42" />
         <AssociationConnector Association="MechAppProjectModel.FK__ServiceEv__Servi__2F10007B" />
         </Diagram>

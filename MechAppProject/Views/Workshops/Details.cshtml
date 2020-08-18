@@ -1,0 +1,99 @@
+﻿@model MechAppProject.DBModule.Workshop
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Workshop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkshopId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
