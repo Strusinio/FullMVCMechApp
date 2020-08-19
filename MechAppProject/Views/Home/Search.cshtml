@@ -1,0 +1,65 @@
+﻿@using MechAppProject.Models
+
+@model IEnumerable<MechAppProject.Models.WorkshopModel>
+
+@{
+    ViewBag.Title = "WorkshopList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container navspace">
+
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+    <p>
+        Genre: @Html.DropDownList("WorkshopGenre", "All")
+        Title: @Html.TextBox("SearchString")
+        <input type="submit" value="Filter" />
+    </p>
+    }
+
+@foreach (var workshop in Model)
+{
+    <div class="card shadow workshop-card" onclick="location.href = '@Url.Action("Details", "Home", new {workshopId = workshop.WorkshopId})';" style="cursor: pointer;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <img src="http://maxi-service.pl/wp-content/uploads/2016/10/mechanik-serwis-warsztat.jpg" class="img-fluid rounded" alt="...">
+                    <div class="mt-2 d-flex justify-content-center">
+                        <span class="fa-sm fa fa-star checked"></span>
+                        <span class="fa-sm fa fa-star checked"></span>
+                        <span class="fa-sm fa fa-star checked"></span>
+                        <span class="fa-sm fa fa-star"></span>
+                        <span class="fa-sm fa fa-star"></span>
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <div class="">
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => workshop.WorkshopName)</h4>
+
+                        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => workshop.City)</h6>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <span class="badge badge-secondary">Skoda</span> <span class="badge badge-secondary">Opony</span>
+
+                    </div>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-end">
+                    <div><a class="m-1 btn btn-secondary" href="@Url.Action("Details", "Home", new {workshopId = workshop.WorkshopId})"><i class="fas fa-user"></i></a></div>
+
+                    @if (Session["Login"] != null)
+                    {
+                        <div><a class="m-1 btn btn-primary" href="@Url.Action("Index", "Chat", new {workshopId = workshop.WorkshopId})"><i class="far fa-comment-dots"></i></a></div>
+                        <div><a class="m-1 btn btn-primary" href="@Url.Action("AddEvent", "Events", new {workshopId = workshop.WorkshopId})">Zarezerwuj</a></div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+</div>

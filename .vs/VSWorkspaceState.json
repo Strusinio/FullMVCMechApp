@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MechAppProject",
+    "\\MechAppProject\\DBModule"
   ],
-  "SelectedNode": "\\MechAppProject.sln",
+  "SelectedNode": "\\MechAppProject\\DBModule\\MechAppDBModel.sql",
   "PreviewInSolutionExplorer": false
 }

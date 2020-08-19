@@ -1,0 +1,177 @@
+﻿@using MechAppProject.DBModule
+@model Workshop
+
+@{
+    ViewBag.Title = "WorkshopView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container navspace">
+
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <img src="http://maxi-service.pl/wp-content/uploads/2016/10/mechanik-serwis-warsztat.jpg" class="img-fluid rounded" alt="...">
+
+                </div>
+
+                <div class="col-5">
+                    <div class="">
+                        <h4 class="mb-0 card-title">@Html.DisplayFor(model => model.WorkshopName)</h4>
+                        <div class="mt-0">
+                            <span class="fa-sm fa fa-star checked"></span>
+                            <span class="fa-sm fa fa-star checked"></span>
+                            <span class="fa-sm fa fa-star checked"></span>
+                            <span class="fa-sm fa fa-star"></span>
+                            <span class="fa-sm fa fa-star"></span>
+                        </div>
+
+
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <span class="badge badge-secondary">Skoda</span> <span class="badge badge-secondary">Opony</span>
+
+                    </div>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-start ">
+                    <!-- Button trigger modal -->
+                    <div><a class="m-1 btn btn-secondary text-white" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-info-circle"></i></a></div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">O Warsztacie</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Informacje</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#opinion" role="tab" aria-controls="opinion" aria-selected="false">Opinie</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                                            <dl class="dl-horizontal">
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.WorkshopId)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.WorkshopId)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.Email)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Email)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.WorkshopName)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.WorkshopName)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.PhoneNbr)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.PhoneNbr)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.City)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.City)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.Street)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Street)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.StreetNbr)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.StreetNbr)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.ZipCode)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.ZipCode)
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="tab-pane" id="opinion" role="tabpanel" aria-labelledby="opinion-tab">
+                                            Tu mogą być opinie
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="row mt-5">
+                    <table class="table">
+                        <tr>
+                            <th>Nazwa usługi</th>
+                            <th>Opis</th>
+                            <th>Cena</th>
+                            <th>Akcja</th>
+                        </tr>
+                        @foreach (var item in Model.WorkshopServices)
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            <a href="">Dodaj</a>
+                        </td>
+                    </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

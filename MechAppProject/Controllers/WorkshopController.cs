@@ -143,14 +143,13 @@ namespace MechAppProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Workshop workshop = db.Workshops.Find(workshopId);
+            WorkshopService workshopService = db.WorkshopServices.Find(workshopId);
 
-
-            if (workshop == null)
+            if (workshopService == null)
             {
                 return HttpNotFound();
             }
-            return View(workshop);
+            return View(workshopService);
         }
 
 

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
+using System.ServiceModel.Activities;
 using System.Web;
 
 namespace MechAppProject.Models
@@ -47,13 +49,8 @@ namespace MechAppProject.Models
         [Display(Name = "Numer Telefonu: ")]
         public string PhoneNbr { get; set; }
 
-       
+        public virtual ICollection<WorkflowService> WorkflowServices { get; set; }
+
     }
 
-    public class ProfileModel
-    {
-        public WorkshopModel WorkshopModel { get; set; }
-
-        public WorkshopServiceModel WorkshopServiceModel { get; set; }
-    }
 }

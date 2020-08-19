@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace MechAppProject.Controllers
         private MechAppProjectEntities db = new MechAppProjectEntities();
 
         // GET: WorkshopServices
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var workshopServices = db.WorkshopServices.Include(w => w.Workshop);
-            return View(await workshopServices.ToListAsync());
+            return View(workshopServices.ToList());
         }
 
         // GET: WorkshopServices/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkshopService workshopService = await db.WorkshopServices.FindAsync(id);
+            WorkshopService workshopService = db.WorkshopServices.Find(id);
             if (workshopService == null)
             {
                 return HttpNotFound();
@@ -49,12 +48,12 @@ namespace MechAppProject.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ServiceId,WorkshopId,Title,Price,DurationInHrs,Description,DurationInMinutes,PriceDecimal")] WorkshopService workshopService)
+        public ActionResult Create([Bind(Include = "ServiceId,WorkshopId,Title,Price,DurationInHrs,Description,DurationInMinutes,PriceDecimal")] WorkshopService workshopService)
         {
             if (ModelState.IsValid)
             {
                 db.WorkshopServices.Add(workshopService);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -63,13 +62,13 @@ namespace MechAppProject.Controllers
         }
 
         // GET: WorkshopServices/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkshopService workshopService = await db.WorkshopServices.FindAsync(id);
+            WorkshopService workshopService = db.WorkshopServices.Find(id);
             if (workshopService == null)
             {
                 return HttpNotFound();
@@ -83,12 +82,12 @@ namespace MechAppProject.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ServiceId,WorkshopId,Title,Price,DurationInHrs,Description,DurationInMinutes,PriceDecimal")] WorkshopService workshopService)
+        public ActionResult Edit([Bind(Include = "ServiceId,WorkshopId,Title,Price,DurationInHrs,Description,DurationInMinutes,PriceDecimal")] WorkshopService workshopService)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(workshopService).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.WorkshopId = new SelectList(db.Workshops, "WorkshopId", "Login", workshopService.WorkshopId);
@@ -96,13 +95,13 @@ namespace MechAppProject.Controllers
         }
 
         // GET: WorkshopServices/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkshopService workshopService = await db.WorkshopServices.FindAsync(id);
+            WorkshopService workshopService = db.WorkshopServices.Find(id);
             if (workshopService == null)
             {
                 return HttpNotFound();
@@ -113,11 +112,11 @@ namespace MechAppProject.Controllers
         // POST: WorkshopServices/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            WorkshopService workshopService = await db.WorkshopServices.FindAsync(id);
+            WorkshopService workshopService = db.WorkshopServices.Find(id);
             db.WorkshopServices.Remove(workshopService);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

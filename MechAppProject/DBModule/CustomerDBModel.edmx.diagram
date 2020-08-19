@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1163e794d368464d8d84887bdb17950f" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="1163e794d368464d8d84887bdb17950f" Name="Diagram" ZoomLevel="74">
         <EntityTypeShape EntityType="MechAppProjectModel.Customer" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MechAppProjectModel.Workshop" Width="1.5" PointX="9" PointY="0.5" />
         <EntityTypeShape EntityType="MechAppProjectModel.Chat" Width="1.5" PointX="6.625" PointY="1.25" />
@@ -14,7 +14,7 @@
         <AssociationConnector Association="MechAppProjectModel.FK__Car__CustomerId__108B795B" />
         <EntityTypeShape EntityType="MechAppProjectModel.WorkshopService" Width="1.5" PointX="11.25" PointY="0.875" />
         <AssociationConnector Association="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" />
-        <EntityTypeShape EntityType="MechAppProjectModel.ServiceEvent" Width="1.5" PointX="7.125" PointY="5.125" />
+        <EntityTypeShape EntityType="MechAppProjectModel.ServiceEvent" Width="1.5" PointX="6.5" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="MechAppProjectModel.FK__ServiceEv__Custo__2E1BDC42" />
         <AssociationConnector Association="MechAppProjectModel.FK__ServiceEv__Servi__2F10007B" />
         </Diagram>

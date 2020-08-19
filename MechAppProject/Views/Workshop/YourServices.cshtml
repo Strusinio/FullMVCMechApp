@@ -12,7 +12,7 @@
 
 @foreach (var workshopService in Model)
 {
-    @*<tr>
+    <tr>
         <td>
             <div>
                 @Html.LabelFor(model => workshopService.Title)
@@ -59,20 +59,10 @@
                 @workshopService.DurationInMinutes
             </div>
         </td>
-    </tr>*@
+    </tr>
 
-    @Html.LabelFor(model => workshopService.Title)
-    @workshopService.Title
 
-    <dt>
-    @Html.DisplayNameFor(model => workshopService.WorkshopId)
-    </dt>
 
-    <dd>
-        @Html.DisplayFor(model => workshopService.WorkshopId)
-    </dd>
-
-    @Html.DisplayFor(model => workshopService.Title)
 
     <div style="margin-top: 50px;"></div>
 }

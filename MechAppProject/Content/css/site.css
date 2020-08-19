@@ -94,8 +94,8 @@ footer {
 }
 
 .navspace {
-    margin-top: 110px;
-    margin-bottom: 50px;
+    margin-top: 90px;
+    margin-bottom: 110px;
 }
 
 .shd {
@@ -107,5 +107,14 @@ footer {
 }
 
 .masthead {
-    background-image: url('img/main.png');
+    background-image: url('../img/main.png');
+}
+
+.checked {
+    color: orange;
+}
+
+.workshop-card:hover {
+    background-color: rgba(219, 129, 37, 0.1);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
 }

@@ -19,6 +19,7 @@ namespace MechAppProject.Models
         public List<ChatRoomModel> ChatRooms { get; set; }
         public List<ChatMessageModel> Messages { get; set; }
 
+
         public ChatModel()
         {
             ChatRooms = new List<ChatRoomModel>();
@@ -41,4 +42,6 @@ namespace MechAppProject.Models
         public string SentBy { get; set; }
         public string SentTo { get; set; }
     }
+
+
 }

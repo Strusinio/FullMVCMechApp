@@ -156,3 +156,7 @@ C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.csp
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.csproj.CopyComplete
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.pdb
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.dll
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.Mvc.dll
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.xml
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.Mvc.xml

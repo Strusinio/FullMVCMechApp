@@ -5,13 +5,13 @@
 <header class="masthead bg-primary text-white">
     <div class="container h-100">
         <div class="row justify-content-center mb-5">
-            <h2 class="page-section-heading d-inline-block text-white">POTRZEBUJESZ POMOCY?</h2>
+            <h2 class="page-section-heading d-inline-block text-white">@ViewBag.Message</h2>
         </div>
         <br />
         <div class="justify-content-center h-100">
             <div class="searchbar">
                 <input class="search_input" type="text" name="" placeholder="Wpisz miasto w którym szukasz pomocy...">
-                <a href="@Url.Action("Index", "Workshop")" class="search_icon"><i class="fas fa-search"></i></a>
+                <a href="@Url.Action("Search", "Home")" class="search_icon"><i class="fas fa-search"></i></a>
             </div>
         </div>
     </div>

@@ -21,13 +21,13 @@ namespace MechAppProject.Controllers
         }
 
         // GET: Workshops/Details/5
-        public ActionResult Details(int? workshopId)
+        public ActionResult Details(int? id)
         {
-            if (workshopId == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Workshop workshop = db.Workshops.Find(workshopId);
+            Workshop workshop = db.Workshops.Find(id);
             if (workshop == null)
             {
                 return HttpNotFound();

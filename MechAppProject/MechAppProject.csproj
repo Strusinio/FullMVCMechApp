@@ -60,11 +60,18 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel.Activities" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,6 +139,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddCarController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
@@ -184,8 +192,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\body.css" />
-    <Content Include="Content\css\heading.css" />
+    <Content Include="Content\css\fonts.css" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\css\chat.css" />
     <Content Include="Content\font-awesome.css" />
@@ -193,6 +200,7 @@
     <Content Include="Content\img\main.png" />
     <Content Include="Content\img\pk.jpg" />
     <Content Include="Content\img\sp.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\vendor\animated-event-calendar\assets\demo.css" />
@@ -215,6 +223,7 @@
       <DependentUpon>CustomerDBModel.edmx</DependentUpon>
       <LastGenOutput>CustomerDBModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="DBModule\CustomerDBModel.edmx.sql" />
     <Content Include="DBModule\CustomerDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CustomerDBModel.edmx</DependentUpon>
@@ -223,7 +232,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\site.css" />
     <EntityDeploy Include="DBModule\CustomerDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CustomerDBModel.Designer.cs</LastGenOutput>
@@ -2021,7 +2030,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_loginPartial.cshtml" />
-    <Content Include="Views\Workshop\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Account\CustomerProfile.cshtml" />
     <Content Include="Views\Account\CustomerProfileEdit.cshtml" />
     <Content Include="Views\Account\WorkshopProfile.cshtml" />
@@ -2050,7 +2059,7 @@
     <Content Include="Views\Account\WorkshopLogin.cshtml" />
     <Content Include="Views\Account\CustomerRegister.cshtml" />
     <Content Include="Views\Account\WorkshopRegister.cshtml" />
-    <Content Include="Views\Home\Workshop.cshtml" />
+    <Content Include="Views\Workshop\Workshop.cshtml" />
     <Content Include="Views\Shared\_sidebarPartial.cshtml" />
     <Content Include="Views\Shared\_topbarPartial.cshtml" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js.map" />
@@ -2204,13 +2213,17 @@
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Shared\_WorkshopLayout.cshtml" />
     <Content Include="Views\Workshop\Table.cshtml" />
-    <Content Include="Views\Workshop\Details.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Workshops\Create.cshtml" />
     <Content Include="Views\Workshops\Delete.cshtml" />
     <Content Include="Views\Workshops\Details.cshtml" />
     <Content Include="Views\Workshops\Edit.cshtml" />
     <Content Include="Views\Workshops\Index.cshtml" />
-    <Content Include="Views\Workshop\ServiceDetails.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\WorkshopServices\Create.cshtml" />
     <Content Include="Views\WorkshopServices\Delete.cshtml" />
     <Content Include="Views\WorkshopServices\Details.cshtml" />
