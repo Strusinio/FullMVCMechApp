@@ -4,210 +4,189 @@
     ViewBag.Title = "Index";
 
 }
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 
 
 <div class="container navspace mb-5">
-<div class="card o-hidden border-0 shadow-lg my-5">
-    <div class="card-body p-0">
-        <!-- Page header start -->
-        <div class="page-title p-3">
-            <div class="row gutters">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <h5 class="title">Chat App</h5>
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Page header start -->
+            <div class="page-title p-3">
+                <div class="row gutters">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <h5 class="title">Chat App</h5>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Page header end -->
-        <!-- Content wrapper start -->
-        <div class="content-wrapper">
+            <!-- Page header end -->
+            <!-- Content wrapper start -->
+            <div class="content-wrapper">
 
-            <!-- Row start -->
-            <div class="row gutters">
+                <!-- Row start -->
+                <div class="row gutters">
 
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                    <div class="card m-0">
+                        <div class="card m-0">
 
-                        <!-- Row start -->
-                        <div class="row no-gutters">
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
-                                <div class="users-container">
-                                    <div class="chat-search-box">
-                                        <div class="input-group">
-                                            <input class="form-control" placeholder="Search">
-                                            <div class="input-group-btn">
-                                                <button type="button" class="btn btn-info">
-                                                    <i class="fa fa-search"></i>
-                                                </button>
+                            <!-- Row start -->
+                            <div class="row no-gutters">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                                    <div class="users-container">
+                                        <div class="chat-search-box">
+                                            <div class="input-group">
+                                                <input class="form-control" placeholder="Search">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-info">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <ul class="users">
-                                        @if (Model.TemporaryChat)
-                                        {
-                                            <div style="color: red;">@Model.CurrentWorkshopName</div>
-                                        }
-
-                                        @foreach (var chatModel in Model.ChatRooms)
-                                        {
-                                            <li class="person" data-chat="person1">
-                                                <div class="user">
-                                                    <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
-                                                </div>
-                                                <p class="name-time">
-
-
-                                                    <span class="name">
-                                                        <a href="@Url.Action("Index", "Chat", new { currentChat = chatModel.ChatId })">
-                                                            @if (!Model.IsCustomer)
-                                                            {
-                                                                @chatModel.CustomerName
-
-                                                            }
-                                                            else
-                                                            {
-                                                                @chatModel.WorkshopName
-                                                            }
-                                                        </a>
-                                                    </span>
-                                                    <span class="time">15/02/2019</span>
-                                                </p>
-                                            </li>
-                                        }</ul>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-                                <div class="selected-user">
-                                    <span>To: <span class="name">Emily Russell</span></span>
-                                </div>
-                                <div class="chat-container">
-                                    <ul class="chat-box chatContainerScroll">
-
-                                        @foreach (var message in Model.Messages)
-                                        {
-                                            var email = Model.CurrentWorkshopEmail;
-
-                                            if (Model.IsCustomer)
+                                        <ul class="users">
+                                            @if (Model.TemporaryChat)
                                             {
-                                                email = Model.CurrentCustomerEmail;
+                                                
 
-                                                <li class="@(email == message.SentBy ? "chat-right d-flex flex-row" : "chat-left d-flex flex-row-reverse justify-content-end")">
-                                                    <br />
-                                                    <div class="chat-hour"><div class="chat-hour">@message.Date.Hour:@message.Date.Minute</div> <span class="ml-2 fa fa-check-circle"></span></div>
-                                                    <div class="chat-text ">
+                                                <li class="person" data-chat="person1">
+                                                    <div class="user">
+                                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
+                                                    </div>
+                                                    <p class="name-time">
 
-                                                        <br />@message.Message
+
+                                                        <span class="name">
+                                                            <a style="color: red;">@Model.CurrentWorkshopName</a>
+                                                        </span>
+                                                        <span style="color: red;" class="time">new</span>
+                                                    </p>
+                                                </li>
+
+                                            }
+
+                                            @foreach (var chatModel in Model.ChatRooms)
+                                            {
+                                                <li class="person" data-chat="person1">
+                                                    <div class="user">
+                                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
                                                     </div>
-                                                    <div class="chat-avatar">
-                                                        <img class="mx-auto d-block"src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                                        <div class="chat-name">@message.SentBy</div>
-                                                    </div>
+                                                    <p class="name-time">
+
+
+                                                        <span class="name">
+                                                            <a class=""href="@Url.Action("Index", "Chat", new { currentChat = chatModel.ChatId })">
+                                                                @if (!Model.IsCustomer)
+                                                                {
+                                                                    @chatModel.CustomerName
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    @chatModel.WorkshopName
+                                                                }
+                                                            </a>
+                                                        </span>
+                                                        <span class="time">15/02/2019</span>
+                                                    </p>
                                                 </li>
                                             }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                                    <div class="selected-user">
+                                        <span>To: 
+                                            <span class="name">
+                                                @if (!Model.IsCustomer)
+                                                {
 
-                                            else 
+                                                    @Model.CurrentWorkshopEmail
+
+                                                }
+
+                                                else
+                                                {
+                                                    @Model.CurrentWorkshopEmail
+                                                }
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="chat-container">
+                                        <ul class="chat-box chatContainerScroll">
+
+                                            @foreach (var message in Model.Messages)
                                             {
-                                                email = Model.CurrentWorkshopEmail;
+                                                var email = Model.CurrentWorkshopEmail;
 
-                                                <li class="@(email == message.SentBy ? "chat-right d-flex flex-row" : "chat-left d-flex flex-row-reverse justify-content-end")">
-                                                    <br />
-                                                    <div class="chat-hour"><div class="chat-hour">@message.Date.Hour:@message.Date.Minute</div> <span class="ml-2 fa fa-check-circle"></span></div>
-                                                    <div class="chat-text ">
+                                                if (Model.IsCustomer)
+                                                {
+                                                    email = Model.CurrentCustomerEmail;
 
-                                                        <br />@message.Message
-                                                    </div>
-                                                    <div class="chat-avatar">
-                                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                                        <div class="chat-name">@message.SentBy</div>
-                                                    </div>
-                                                </li>
+                                                    <li class="@(email == message.SentBy ? "chat-right d-flex flex-row" : "chat-left d-flex flex-row-reverse justify-content-end")">
+                                                        <br />
+                                                        <div class="chat-hour"><div class="chat-hour">@message.Date.Hour:@message.Date.Minute</div> <span class="ml-2 fa fa-check-circle"></span></div>
+                                                        <div class="chat-text ">
+
+                                                            <br />@message.Message
+                                                        </div>
+                                                        <div class="chat-avatar">
+                                                            <img class="mx-auto d-block" src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                                            <div class="chat-name">@message.SentBy</div>
+                                                        </div>
+                                                    </li>
+                                                }
+
+                                                else
+                                                {
+                                                    email = Model.CurrentWorkshopEmail;
+
+                                                    <li class="@(email == message.SentBy ? "chat-right d-flex flex-row" : "chat-left d-flex flex-row-reverse justify-content-end")">
+                                                        <br />
+                                                        <div class="chat-hour"><div class="chat-hour">@message.Date.Hour:@message.Date.Minute</div> <span class="ml-2 fa fa-check-circle"></span></div>
+                                                        <div class="chat-text ">
+
+                                                            <br />@message.Message
+                                                        </div>
+                                                        <div class="chat-avatar">
+                                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                                            <div class="chat-name">@message.SentBy</div>
+                                                        </div>
+                                                    </li>
+                                                }
                                             }
-                                        }
-                                    
-                                    </ul>
-                                    <div class="form-group mt-3 mb-3">
-                                        @using (Html.BeginForm("SendMessage", "Chat", FormMethod.Post, new { @class=""}))
-                                        {
-                                            @Html.HiddenFor(model => model.CurrentChatId)
-                                            @Html.HiddenFor(model => model.CurrentCustomerId)
-                                            @Html.HiddenFor(model => model.CurrentWorkshopId)
-                                            @Html.HiddenFor(model => model.CurrentCustomerEmail)
-                                            @Html.HiddenFor(model => model.CurrentWorkshopEmail)
-                                            @Html.TextAreaFor(model => model.CurrentMessage, new { @class = "form-control" })
 
-                                            if (Model.CurrentChatId > 0 || Model.TemporaryChat)
+                                        </ul>
+                                        <div class="form-group mt-3 mb-3">
+                                            @using (Html.BeginForm("SendMessage", "Chat", FormMethod.Post, new { @class = "" }))
                                             {
-                                                <button class="mt-2 btn btn-primary btn-block" type="submit">Wyślij</button>
+                                                @Html.HiddenFor(model => model.CurrentChatId)
+                                                @Html.HiddenFor(model => model.CurrentCustomerId)
+                                                @Html.HiddenFor(model => model.CurrentWorkshopId)
+                                                @Html.HiddenFor(model => model.CurrentCustomerEmail)
+                                                @Html.HiddenFor(model => model.CurrentWorkshopEmail)
+                                                @Html.TextAreaFor(model => model.CurrentMessage, new { @class = "form-control" })
+
+                                                if (Model.CurrentChatId > 0 || Model.TemporaryChat)
+                                                {
+                                                    <button class="mt-2 btn btn-primary btn-block" type="submit">Wyślij</button>
+                                                }
                                             }
-                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Row end -->
                         </div>
-                        <!-- Row end -->
+
                     </div>
 
                 </div>
+                <!-- Row end -->
 
             </div>
-            <!-- Row end -->
-
+            <!-- Content wrapper end -->
         </div>
-        <!-- Content wrapper end -->
-    </div>
     </div>
 </div>
-
-<style>
-    .chat-list {
-        height: 70vh;
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-    }
-
-    .chat-list-bottom {
-        border-left: 1px solid black;
-        border-bottom: 1px solid black;
-        height: 6vh;
-    }
-
-    .chat-window {
-        border: 1px solid black;
-        height: 70vh;
-        overflow-y: scroll;
-    }
-
-    .text-area {
-        width: 100%;
-        display: block;
-        max-width: none;
-        border: 1px solid black;
-    }
-
-    .message-window {
-        padding: 0;
-    }
-
-    .message-out {
-        text-align: right;
-        padding: 8px 10px;
-        color: white;
-        background-color: cadetblue;
-        margin-bottom: 8px;
-        border-radius: 10px;
-    }
-
-    .message-in {
-        color: white;
-        padding: 8px 10px;
-        background-color: red;
-        margin-bottom: 8px;
-        border-radius: 10px;
-    }
-
-
-
-</style>
-

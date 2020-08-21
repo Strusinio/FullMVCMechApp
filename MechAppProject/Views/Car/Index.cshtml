@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MechAppProject.DBModule.Car>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container navspace">
+
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h3>Twoje samochody</h3>
+                        <p>
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Brand)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Model)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EngineType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Customer.Login)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Brand)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Model)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EngineType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Customer.Login)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.CarId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.CarId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.CarId })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

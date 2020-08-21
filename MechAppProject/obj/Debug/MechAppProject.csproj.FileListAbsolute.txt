@@ -124,6 +124,8 @@ C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\EntityFramework.SqlServe
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\Newtonsoft.Json.dll
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.dll
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.Mvc.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\System.Web.Helpers.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\System.Web.Mvc.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\System.Web.Optimization.dll
@@ -136,6 +138,8 @@ C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\EntityFramework.xml
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\EntityFramework.SqlServer.xml
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\Newtonsoft.Json.xml
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.xml
+C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.Mvc.xml
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\System.Web.Helpers.xml
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\System.Web.Mvc.xml
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\System.Web.Optimization.xml
@@ -151,12 +155,7 @@ C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\pl\System.Web.Razor.reso
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\pl\System.Web.WebPages.resources.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\pl\System.Web.WebPages.Deployment.resources.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\pl\System.Web.WebPages.Razor.resources.dll
-C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.csprojAssemblyReference.cache
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.csproj.CoreCompileInputs.cache
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.csproj.CopyComplete
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.dll
 C:\Users\AstiaN\source\repos\MechApp\MechAppProject\obj\Debug\MechAppProject.pdb
-C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.dll
-C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.Mvc.dll
-C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.xml
-C:\Users\AstiaN\source\repos\MechApp\MechAppProject\bin\PagedList.Mvc.xml

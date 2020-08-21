@@ -22,23 +22,15 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2"></i>
                     Profil
                 </a>
-                <a class="dropdown-item" href="@Url.Action("CustomerProfileEdit","Account")">
+                <a class="dropdown-item" href="@Url.Action("Index","Car")">
                     <i class="fas fa-user fa-sm fa-fw mr-2"></i>
-                    Profil Edit
+                    Samochody
                 </a>
-                <a class="dropdown-item" href="@Url.Action("AddNewCar","AddCar")">
-                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
-                    Dodaj samochod
-                </a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="@Url.Action("Index","Chat")">
                     <i class="fas fa-user fa-sm fa-fw mr-2"></i>
                     Wiadomości
                 </a>
-                <a class="dropdown-item" href="@Url.Action("YourCarDetails","AddCar")">
-                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
-                    Twoje samochody
-                </a>
-
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
@@ -64,7 +56,7 @@ else if (Session["LoginWorkshop"] != null)
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="@Url.Action("Workshop","Home")">
+                <a class="dropdown-item" href="@Url.Action("Index","Workshop")">
                     <i class="fas fa-user fa-sm fa-fw mr-2"></i>
                     Panel
                 </a>

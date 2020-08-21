@@ -138,6 +138,7 @@
     <Compile Include="Code\Helpers\EventsHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddCarController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -193,14 +194,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\fonts.css" />
+    <Content Include="Content\css\pagedlist.css" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\css\chat.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\img\main.png" />
     <Content Include="Content\img\pk.jpg" />
+    <Content Include="Content\img\profile.png" />
     <Content Include="Content\img\sp.jpg" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\vendor\animated-event-calendar\assets\demo.css" />
@@ -232,7 +234,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\css\site.css" />
+    <Content Include="Content\css\mystyles.css" />
     <EntityDeploy Include="DBModule\CustomerDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CustomerDBModel.Designer.cs</LastGenOutput>
@@ -282,6 +284,7 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.simple-calendar.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -2037,7 +2040,6 @@
     <Content Include="Views\Account\WorkshopProfileEdit.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\AddCar\AddNewCar.cshtml" />
-    <Content Include="Views\AddCar\Index.cshtml" />
     <Content Include="Views\AddCar\YourCarDetails.cshtml" />
     <Content Include="Views\Workshop\AddService.cshtml" />
     <Content Include="Views\Workshop\YourServices.cshtml" />
@@ -2059,7 +2061,7 @@
     <Content Include="Views\Account\WorkshopLogin.cshtml" />
     <Content Include="Views\Account\CustomerRegister.cshtml" />
     <Content Include="Views\Account\WorkshopRegister.cshtml" />
-    <Content Include="Views\Workshop\Workshop.cshtml" />
+    <Content Include="Views\Workshop\Index.cshtml" />
     <Content Include="Views\Shared\_sidebarPartial.cshtml" />
     <Content Include="Views\Shared\_topbarPartial.cshtml" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js.map" />
@@ -2229,11 +2231,15 @@
     <Content Include="Views\WorkshopServices\Details.cshtml" />
     <Content Include="Views\WorkshopServices\Edit.cshtml" />
     <Content Include="Views\WorkshopServices\Index.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
+    <Content Include="Views\Car\Delete.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\vendor\" />
-    <Folder Include="Views\Car\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

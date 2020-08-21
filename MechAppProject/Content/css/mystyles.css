@@ -16,17 +16,7 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-/*input,
-select,
-textarea {
-    max-width: 280px;
-}*/
-
-
-
 /*new*/
-
 
 .searchbar {
     margin-bottom: auto;
@@ -117,4 +107,19 @@ footer {
 .workshop-card:hover {
     background-color: rgba(219, 129, 37, 0.1);
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.bg-search {
+    background-color: rgba(219, 129, 37, 0.95) !important;
+    height: 250px !important;
+    padding-top: 100px;
+
+}
+
+div .chat-container {
+    min-height: 500px !important;
+}
+
+.img-profile {
+    height: 200px;
 }

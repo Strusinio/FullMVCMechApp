@@ -1,6 +1,7 @@
 ﻿@using MechAppProject.DBModule
 @model Workshop
 
+
 @{
     ViewBag.Title = "WorkshopView";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -132,7 +133,7 @@
                                             Tu mogą być opinie
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -145,6 +146,8 @@
             </div>
             <div class="container">
                 <div class="row mt-5">
+                    
+
                     <table class="table">
                         <tr>
                             <th>Nazwa usługi</th>
@@ -154,20 +157,20 @@
                         </tr>
                         @foreach (var item in Model.WorkshopServices)
                         {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        <td>
-                            <a href="">Dodaj</a>
-                        </td>
-                    </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    <div><a class="m-1 btn btn-primary" href="@Url.Action("AddEvent", "Events")">Zarezerwuj</a></div>
+                                </td>
+                            </tr>
                         }
                     </table>
                 </div>

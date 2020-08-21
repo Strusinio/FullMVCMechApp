@@ -2,17 +2,14 @@
     ViewBag.Title = "Home Page";
 }
 
-<header class="masthead bg-primary text-white">
-    <div class="container h-100">
+<header class="masthead bg-secondary text-white">
+    <div class="container">
         <div class="row justify-content-center mb-5">
             <h2 class="page-section-heading d-inline-block text-white">@ViewBag.Message</h2>
         </div>
-        <br />
-        <div class="justify-content-center h-100">
-            <div class="searchbar">
-                <input class="search_input" type="text" name="" placeholder="Wpisz miasto w którym szukasz pomocy...">
-                <a href="@Url.Action("Search", "Home")" class="search_icon"><i class="fas fa-search"></i></a>
-            </div>
+        <div class="searchbar row">
+            <input class="search_input" type="text" name="" placeholder="Wpisz miasto w którym szukasz pomocy...">
+            <a href="@Url.Action("Search", "Home")" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
     </div>
 </header>
@@ -134,7 +131,7 @@
 
             </div>
             <div class="col-lg-6 text-center">
-                <img class="mb-2 img-fluid rounded-circle" src="~/Content/img/pk.jpg" width="200px"/>
+                <img class="mb-2 img-fluid rounded-circle" src="~/Content/img/pk.jpg" width="200px" />
                 <h3>Patryk Kaszubowski</h3>
                 <p>Backend</p>
             </div>

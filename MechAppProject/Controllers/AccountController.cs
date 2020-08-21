@@ -243,7 +243,7 @@ namespace MechAppProject.Controllers
                 if (currentWorkshop != null)
                 {
                     Session["LoginWorkshop"] = new SessionModel() { WorkshopId = currentWorkshop.WorkshopId, WorkshopLogin = currentWorkshop.Login };
-                    result = RedirectToAction("Workshop", "Home");
+                    result = RedirectToAction("Index", "Workshop");
                 }
                 else
                 {

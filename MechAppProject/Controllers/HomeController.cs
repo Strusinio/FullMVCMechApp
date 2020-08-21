@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using MechAppProject.DBModule;
 using MechAppProject.Models;
+using PagedList;
 
 namespace MechAppProject.Controllers
 {
@@ -20,10 +21,9 @@ namespace MechAppProject.Controllers
             return View();
         }
 
-        public ActionResult Search(string searchString, string workshopGenre)
+        public ActionResult Search(string sortOrder, string currentFilter, string searchString, int? page)
         {
             var model = new List<WorkshopModel>();
-
             var workshops = db.Workshops.ToList();
 
             foreach (var workshop in workshops)
@@ -43,36 +43,117 @@ namespace MechAppProject.Controllers
                 model.Add(workshopModel);
             }
 
-            var genreLst = new List<string>();
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            var genreQry = from d in db.Workshops
-                           orderby d.WorkshopName
-                           select d.WorkshopName;
-
-            genreLst.AddRange(genreQry.Distinct());
-            ViewBag.WorkshopGenre = new SelectList(genreLst);
-
-            var movies = from m in db.Workshops
-                         select m;
-
-            if (!string.IsNullOrEmpty(searchString))
+            if (searchString != null)
             {
-                movies = movies.Where(s => s.WorkshopName.Contains(searchString));
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
             }
 
-            if (!string.IsNullOrEmpty(workshopGenre))
+            ViewBag.CurrentFilter = searchString;
+
+            var workshopsView = from w in model
+                select w;
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                movies = movies.Where(x => x.WorkshopName == workshopGenre);
+                workshopsView = workshopsView.Where(w => w.WorkshopName.Contains(searchString) || w.City.Contains(searchString)); ;
             }
 
-           
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    workshopsView = workshopsView.OrderByDescending(s => s.WorkshopName);
+                    break;
+                default:  // Name ascending 
+                    workshopsView = workshopsView.OrderBy(s => s.WorkshopName);
+                    break;
+            }
 
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
 
-
-
-
-            return View(model);
+            return View(workshopsView.ToPagedList(pageNumber, pageSize));
         }
+
+
+        //ViewBag.CurrentSort = sortOrder;
+        //ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+       
+
+        //ViewBag.CurrentFilter = searchString;
+
+        //var students = from s in db.Workshops
+        //               select s;
+        //if (!String.IsNullOrEmpty(searchString))
+        //{
+        //    students = students.Where(s => s.WorkshopName.Contains(searchString));
+        //}
+        //switch (sortOrder)
+        //{
+        //    case "name_desc":
+        //        students = students.OrderByDescending(s => s.WorkshopName);
+        //        break;
+        //    default:  // Name ascending 
+        //        students = students.OrderBy(s => s.WorkshopName);
+        //        break;
+        //}
+
+        //int pageSize = 3;
+        //int pageNumber = (page ?? 1);
+        //return View(students.ToPagedList(pageNumber, pageSize));
+
+        // -------------------------------------------------------
+
+        //var model = new List<WorkshopModel>();
+
+
+
+        //foreach (var workshop in workshops)
+        //{
+        //    var workshopModel = new WorkshopModel()
+        //    {
+        //        WorkshopId = workshop.WorkshopId,
+        //        City = workshop.City,
+        //        Email = workshop.Email,
+        //        PhoneNbr = workshop.PhoneNbr,
+        //        Street = workshop.Street,
+        //        StreetNbr = workshop.StreetNbr,
+        //        WorkshopName = workshop.WorkshopName,
+        //        ZipCode = workshop.ZipCode
+        //    };
+
+        //    model.Add(workshopModel);
+        //}
+
+        //ViewBag.SortingName = String.IsNullOrEmpty(Sorting_Order) ? "Name_Description" : "";
+        //ViewBag.SortingDate = Sorting_Order == "Date_Enroll" ? "Date_Description" : "Date";
+
+        //var students = from stu in db.Workshops select stu;
+        //{
+        //    students = students.Where(stu => stu.WorkshopName.ToUpper().Contains(Search_Data.ToUpper()));
+        //}
+        //switch (Sorting_Order)
+        //{
+        //    case "Name_Description":
+        //        students = students.OrderByDescending(stu => stu.WorkshopName);
+        //        break;
+        //    default:
+        //        students = students.OrderBy(stu => stu.WorkshopName);
+        //        break;
+        //}
+
+        //return View(model);
+
+
 
         public ActionResult Details(int? workshopId)
 
