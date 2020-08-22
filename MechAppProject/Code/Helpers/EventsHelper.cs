@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MechAppProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,6 +34,40 @@ namespace MechAppProject.Code.Helpers
             }
 
             return hoursToSelect;
+        }
+
+        public static string ConvertEventStatus(int order)
+        {
+            var result = string.Empty;
+
+            var orderStatus = (OrderStatus)order;
+
+            switch (orderStatus)
+            {
+                case OrderStatus.OrderReceived:
+                    {
+                        result = "Rezerwacja złożona";
+                        break;
+                    }
+                case OrderStatus.OrderPending:
+                    {
+                        result = "W trakcie realizacji";
+                        break;
+                    }
+                case OrderStatus.OrderRefuse:
+                    {
+                        result = "Odrzucono";
+                        break;
+                    }
+                case OrderStatus.OrderReadyToCollect:
+                    {
+                        result = "Gotowy do odbioru";
+                        break;
+                    }
+                default: break;
+            }
+
+            return result;
         }
     }
 }

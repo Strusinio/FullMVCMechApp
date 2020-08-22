@@ -13,7 +13,8 @@
     <button type="button" onclick="location.href='@Url.Action("Index","Workshop")'">Lista warsztatów</button>
     <button type="button" onclick="location.href='@Url.Action("AddNewCar","AddCar")'">Dodaj Pojazd</button>
     <button type="button" onclick="location.href='@Url.Action("YourCarDetails","AddCar")'">Twoje Pojazd</button>
-   
+    <button type="button" onclick="location.href='@Url.Action("DisplayCustomerEvents","Events")'">Twoje rezerwacje</button>
+
 }
 @if (Session["LoginWorkshop"] != null)
 {
@@ -21,5 +22,6 @@
     <button type="button" onclick="location.href='@Url.Action("WorkshopProfileEdit","Account")'">Zmień dane workshop</button>
     <button type="button" onclick="location.href='@Url.Action("AddService","Workshop")'">Dodaj usługi</button>
     <button type="button" onclick="location.href='@Url.Action("YourServices","Workshop")'">Twoje usługi</button>
-    
+    <button type="button" onclick="location.href='@Url.Action("DisplayWorkshopEvents","Events")'">Rezerwacje</button>
+
 }

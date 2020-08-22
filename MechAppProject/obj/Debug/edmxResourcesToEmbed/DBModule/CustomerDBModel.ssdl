@@ -111,7 +111,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ServiceEv__Custo__2E1BDC42">
+  <Association Name="FK__WorkshopS__Works__1ED998B2">
+    <End Role="Workshops" Type="Self.Workshops" Multiplicity="1" />
+    <End Role="WorkshopServices" Type="Self.WorkshopServices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workshops">
+        <PropertyRef Name="WorkshopId" />
+      </Principal>
+      <Dependent Role="WorkshopServices">
+        <PropertyRef Name="WorkshopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceEvent_Customers">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
     <End Role="ServiceEvent" Type="Self.ServiceEvent" Multiplicity="*" />
     <ReferentialConstraint>
@@ -123,7 +135,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ServiceEv__Servi__2F10007B">
+  <Association Name="FK_ServiceEvent_WorkshopServices">
     <End Role="WorkshopServices" Type="Self.WorkshopServices" Multiplicity="1" />
     <End Role="ServiceEvent" Type="Self.ServiceEvent" Multiplicity="*" />
     <ReferentialConstraint>
@@ -132,18 +144,6 @@
       </Principal>
       <Dependent Role="ServiceEvent">
         <PropertyRef Name="ServiceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__WorkshopS__Works__1ED998B2">
-    <End Role="Workshops" Type="Self.Workshops" Multiplicity="1" />
-    <End Role="WorkshopServices" Type="Self.WorkshopServices" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Workshops">
-        <PropertyRef Name="WorkshopId" />
-      </Principal>
-      <Dependent Role="WorkshopServices">
-        <PropertyRef Name="WorkshopId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -166,17 +166,17 @@
       <End Role="Workshops" EntitySet="Workshops" />
       <End Role="Chat" EntitySet="Chat" />
     </AssociationSet>
-    <AssociationSet Name="FK__ServiceEv__Custo__2E1BDC42" Association="Self.FK__ServiceEv__Custo__2E1BDC42">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="ServiceEvent" EntitySet="ServiceEvent" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ServiceEv__Servi__2F10007B" Association="Self.FK__ServiceEv__Servi__2F10007B">
-      <End Role="WorkshopServices" EntitySet="WorkshopServices" />
-      <End Role="ServiceEvent" EntitySet="ServiceEvent" />
-    </AssociationSet>
     <AssociationSet Name="FK__WorkshopS__Works__1ED998B2" Association="Self.FK__WorkshopS__Works__1ED998B2">
       <End Role="Workshops" EntitySet="Workshops" />
       <End Role="WorkshopServices" EntitySet="WorkshopServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceEvent_Customers" Association="Self.FK_ServiceEvent_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="ServiceEvent" EntitySet="ServiceEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceEvent_WorkshopServices" Association="Self.FK_ServiceEvent_WorkshopServices">
+      <End Role="WorkshopServices" EntitySet="WorkshopServices" />
+      <End Role="ServiceEvent" EntitySet="ServiceEvent" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -11,6 +11,79 @@ namespace MechAppProject.Controllers
 {
     public class EventsController : Controller
     {
+        public ActionResult DisplayCustomerEvents()
+        {
+            var session = Session["Login"] as SessionModel;
+            var viewModel = new List<DisplayEventModel>();
+
+            if (session != null)
+            {
+                using (var db = new MechAppProjectEntities())
+                {
+                    var customerEvenets = db.ServiceEvents.Where(x => x.CustomerId == session.UserId).ToList();
+
+                    customerEvenets.ForEach(x =>
+                    {
+                        viewModel.Add(new DisplayEventModel()
+                        {
+                            StartDate = x.StartDate,
+                            EndDate = x.EndDate,
+                            WorkshopName = x.WorkshopService.Workshop.WorkshopName,
+                            Status = EventsHelper.ConvertEventStatus(x.OrderStatus)
+                        });
+                    });
+                }
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult DisplayWorkshopEvents()
+        {
+            var session = Session["LoginWorkshop"] as SessionModel;
+            var viewModel = new List<DisplayEventModel>();
+
+            if (session != null)
+            {
+                using (var db = new MechAppProjectEntities())
+                {
+                    var workshopEvents = db.ServiceEvents.Where(x => x.WorkshopService.WorkshopId == session.WorkshopId).ToList();
+
+                    workshopEvents.ForEach(x =>
+                    {
+                        viewModel.Add(new DisplayEventModel()
+                        {
+                            StartDate = x.StartDate,
+                            EndDate = x.EndDate,
+                            WorkshopName = x.WorkshopService.Workshop.WorkshopName,
+                            Status = EventsHelper.ConvertEventStatus(x.OrderStatus),
+                            CustomerName = x.Customer.Name,
+                            StatusId = (OrderStatus)x.OrderStatus,
+                            ServiceEventId = x.ServiceEventId
+                        });
+                    });
+                }
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeEventStatus(List<DisplayEventModel> viewModel)
+        {
+            using (var db = new MechAppProjectEntities())
+            {
+                var serviceId = viewModel.First().ServiceEventId;
+                var serviceEvent = db.ServiceEvents.First(x => x.ServiceEventId == serviceId);
+
+                serviceEvent.OrderStatus = (int)viewModel.First().StatusId;
+
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("DisplayWorkshopEvents");
+        }
+
         // GET: Events
         public ActionResult AddEvent(int workshopId)
         {

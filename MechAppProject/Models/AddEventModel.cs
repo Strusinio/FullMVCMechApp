@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,10 +34,14 @@ namespace MechAppProject.Models
 
     public enum OrderStatus
     {
+        [Display(Name = "Złożono")]
         OrderReceived = 1,
+        [Display(Name = "W trakcie")]
         OrderPending = 2,
+        [Display(Name = "Odrzucono")]
         OrderRefuse = 3,
-        OrderReadyToCollect = 3
+        [Display(Name = "Gotowy")]
+        OrderReadyToCollect = 4
         
     }
 }

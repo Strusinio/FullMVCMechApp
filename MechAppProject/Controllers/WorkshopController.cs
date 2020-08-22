@@ -104,5 +104,41 @@ namespace MechAppProject.Controllers
 
             return View(model);
         }
+
+        public ActionResult WorkshopSitePanel(int workshopId)
+        {
+            var viewModel = new WorkshopSitePanelModel();
+
+            using (var db = new MechAppProjectEntities())
+            {
+                var workshop = db.Workshops.First(x => x.WorkshopId == workshopId);
+                var workshopServices = db.WorkshopServices.Where(x => x.WorkshopId == workshopId).ToList();
+
+                viewModel.ZipCode = workshop.ZipCode;
+                viewModel.WorkshopName = workshop.WorkshopName;
+                viewModel.StreetNbr = workshop.StreetNbr;
+                viewModel.Street = workshop.Street;
+                viewModel.PhoneNbr = workshop.PhoneNbr;
+                viewModel.OwnerName = workshop.OwerName;
+                viewModel.Email = workshop.Email;
+                viewModel.City = workshop.City;
+                
+                foreach (var workshopService in workshopServices)
+                {
+                    viewModel.WorkshopServices.Add(new WorkshopServiceModel()
+                    {
+                        Description = workshopService.Description,
+                        DurationInHours = workshopService.DurationInHrs,
+                        DurationInMinutes = workshopService.DurationInMinutes,
+                        Price = workshopService.Price,
+                        PriceDecimal = workshopService.PriceDecimal,
+                        Title = workshopService.Title,
+                        WorkshopId = workshopService.WorkshopId
+                    });
+                }
+            }
+
+            return View(viewModel);
+        }
     }
 }

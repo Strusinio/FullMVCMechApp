@@ -176,9 +176,11 @@
     <Compile Include="Models\ChatModel.cs" />
     <Compile Include="Models\CustmerLoginModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\DisplayEventModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Models\WorkshopModel.cs" />
     <Compile Include="Models\WorkshopServiceModel.cs" />
+    <Compile Include="Models\WorkshopSitePanelModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +268,9 @@
     <Content Include="Views\Workshop\YourServices.cshtml" />
     <Content Include="Views\Events\AddEvent.cshtml" />
     <Content Include="Views\Events\DisplayEvent.cshtml" />
+    <Content Include="Views\Workshop\WorkshopSitePanel.cshtml" />
+    <Content Include="Views\Events\DisplayCustomerEvents.cshtml" />
+    <Content Include="Views\Events\DisplayWorkshopEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

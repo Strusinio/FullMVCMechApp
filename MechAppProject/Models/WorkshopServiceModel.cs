@@ -18,7 +18,7 @@ namespace MechAppProject.Models
         [DisplayName("Cena (zł)")]
         public int? Price { get; set; }
 
-        [DisplayName("Cena (gł)")]
+        [DisplayName("Cena (gr)")]
         public int? PriceDecimal { get; set; }
 
         [DisplayName("Czas trwania usługi (godz)")]
@@ -26,7 +26,6 @@ namespace MechAppProject.Models
 
         [DisplayName("Czas trwania usługi (min)")]
         public int? DurationInMinutes{ get; set; }
-        public int WorkshopServices { get; internal set; }
         public int WorkshopId { get; internal set; }
     }
 }

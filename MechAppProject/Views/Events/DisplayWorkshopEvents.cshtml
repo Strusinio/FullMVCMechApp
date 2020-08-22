@@ -1,0 +1,41 @@
+﻿@model List<MechAppProject.Models.DisplayEventModel>
+
+@{
+    ViewBag.Title = "DisplayWorkshopEvents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rezerwacje</h2>
+
+
+@{
+    var index = 0;
+}
+
+@foreach (var workshopEvent in Model)
+{
+    <div><b>Miejsce:</b></div>
+    <p>@workshopEvent.WorkshopName</p>
+
+    <div><b>Data:</b></div>
+    <p>@workshopEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @workshopEvent.EndDate.ToString("hh:mm")</p>
+
+    using (Html.BeginForm("ChangeEventStatus", "Events", FormMethod.Post))
+    {
+        <div><b>Status:</b></div>
+
+        @Html.EnumDropDownListFor(
+            x => x[index].StatusId,
+            "-",
+            new { @class = "form-control" })
+        @Html.HiddenFor(x => x[index].ServiceEventId)
+        <input type="hidden" name="Index" value="@index" />
+
+        <button type="submit" class="btn btn-info" style="margin-top: 10px;">Zmień status</button>
+    }
+
+    index++;
+
+    <hr />
+}
+

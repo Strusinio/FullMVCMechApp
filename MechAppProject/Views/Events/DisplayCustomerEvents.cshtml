@@ -1,0 +1,23 @@
+﻿@model List<MechAppProject.Models.DisplayEventModel>
+
+@{
+    ViewBag.Title = "DisplayCustomerEvents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Twoje rezerwacje</h2>
+
+@foreach (var customerEvent in Model)
+{
+    <div><b>Miejsce:</b></div>
+    <p>@customerEvent.WorkshopName</p>
+
+    <div><b>Data:</b></div>
+    <p>@customerEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @customerEvent.EndDate.ToString("hh:mm")</p>
+
+    <div><b>Status:</b></div>
+    <p>@customerEvent.Status</p>
+
+    <hr />
+}
+

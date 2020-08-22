@@ -1,0 +1,41 @@
+﻿@model MechAppProject.Models.WorkshopSitePanelModel
+
+@{
+    ViewBag.Title = "WorkshopSitePanel";
+}
+
+<h2>Informacje o warsztacie</h2>
+
+<div><b>Nazwa warsztatu:</b></div>
+<p>@Model.WorkshopName</p>
+
+<div><b>Właściciel:</b></div>
+<p>@Model.OwnerName</p>
+
+<div><b>Telefon:</b></div>
+<p>@Model.PhoneNbr</p>
+
+<div><b>E-mail:</b></div>
+<p>@Model.Email</p>
+
+<div><b>Adres:</b></div>
+<p>@Model.City, @Model.Street @Model.StreetNbr, @Model.ZipCode</p>
+
+<hr />
+
+<div><b>USŁUGI:</b></div>
+
+@foreach (var workshopService in Model.WorkshopServices)
+{
+    <div><b>Usługa:</b></div>
+    <p>@workshopService.Title</p>
+    <p>@workshopService.Description</p>
+
+    <div><b>Czas trwania:</b></div>
+    <p>@workshopService.DurationInHours:@workshopService.DurationInMinutes</p>
+
+    <div><b>Cena:</b></div>
+    <p>@workshopService.Price,@workshopService.PriceDecimal</p>
+
+    <hr />
+}

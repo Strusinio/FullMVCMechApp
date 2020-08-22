@@ -14,11 +14,11 @@
         <div class="row">
             <div class="col-xs-50 workshop-list">
                 <div>@workshop.WorkshopName</div>
-                <div>@workshop.Email</div>
-                <div>@workshop.PhoneNbr</div>
-                <div>@workshop.City</div>
-                <div>@workshop.ZipCode</div>
-                <div>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>
+                <!-- <div>@workshop.Email</div>
+     <div>@workshop.PhoneNbr</div>
+     <div>@workshop.City</div>
+     <div>@workshop.ZipCode</div>
+     <div>@string.Format("{0} {1}", workshop.Street, workshop.StreetNbr)</div>-->
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div>@Html.ActionLink("Zarezerwuj termin", "AddEvent", "Events", new { workshopId = workshop.WorkshopId }, null)</div>
     }
 
-    <div>@Html.ActionLink("Lista Usług", "YourServices", "Workshop", new { workshopId = workshop.WorkshopId }, null)</div>
+    <div>@Html.ActionLink("Strona Warsztatu", "WorkshopSitePanel", "Workshop", new { workshopId = workshop.WorkshopId }, null)</div>
 
 
     <div style="margin-top: 50px;"></div>
