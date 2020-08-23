@@ -123,3 +123,8 @@ div .chat-container {
 .img-profile {
     height: 200px;
 }
+
+#profile table tr td label {
+    font-weight: bold;
+    color: dimgrey;
+}

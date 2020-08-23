@@ -7,6 +7,8 @@
     <title>@ViewBag.Title - MechApp</title>
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
+    
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -32,7 +34,13 @@
 @RenderSection("scripts", required: false)
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Core theme JS-->
+<!-- Core theme JS-->
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxh5rgjuQjSO79-Wo26BWSeTqqUyGZo90&callback=initMap"
+        type="text/javascript">
+</script>
+
 
 </body>
 </html>

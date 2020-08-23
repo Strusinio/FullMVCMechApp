@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MechAppProject.DBModule;
+using MechAppProject.Models;
 
 namespace MechAppProject.Controllers
 {
@@ -14,12 +15,14 @@ namespace MechAppProject.Controllers
     {
         private MechAppProjectEntities db = new MechAppProjectEntities();
 
+        public int CustomerId { get; private set; }
+
         // GET: Car
-        public ActionResult Index()
-        {
-            var cars = db.Cars.Include(c => c.Customer);
-            return View(cars.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    var cars = db.Cars.Include(c => c.Customer);
+        //    return View(cars.ToList());
+        //}
 
         // GET: Car/Details/5
         public ActionResult Details(int? id)
@@ -129,5 +132,7 @@ namespace MechAppProject.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }

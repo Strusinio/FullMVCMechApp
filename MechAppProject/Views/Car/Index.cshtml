@@ -1,9 +1,9 @@
-﻿@model IEnumerable<MechAppProject.DBModule.Car>
+﻿@*@model IEnumerable<MechAppProject.DBModule.Car>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
     <div class="container navspace">
 
@@ -36,16 +36,20 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Brand)
+                                        @Html.LabelFor(model => item.Brand)
+                                        @item.Brand
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Model)
+                                        @Html.LabelFor(model => item.Brand)
+                                        @item.Brand
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.EngineType)
+                                        @Html.LabelFor(model => item.Brand)
+                                        @item.Brand
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Customer.Login)
+                                        @Html.LabelFor(model => item.Brand)
+                                        @item.Brand
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.CarId }) |
@@ -61,4 +65,96 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
+
+
+@*<tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => carYours.Brand)
+                @carYours.Brand
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => carYours.Model)
+                @carYours.Model
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @Html.LabelFor(model => carYours.EngineType)
+                @carYours.EngineType
+            </div>
+
+        </td>
+    </tr>*@
+
+@using MechAppProject.Models
+
+@model List<CarModel>
+
+@{
+    ViewBag.Title = "YourCarDetails";
+}
+    <div class="container navspace">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h3>Twoje samochody</h3>
+                        <p>
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+
+                        <table class="table">
+
+
+                            <tr>
+                                <th>
+                                    Marka
+                                </th>
+                                <th>
+                                    Model
+                                </th>
+                                <th>
+                                    Typ silnika
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.Brand
+                                    </td>
+                                    <td>
+                                        @item.Model
+                                    </td>
+                                    <td>
+                                        @item.EngineType
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.CarId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.CarId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.CarId })
+                                    </td>
+                                </tr>
+
+                                <div style="margin-top: 50px;"></div>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+

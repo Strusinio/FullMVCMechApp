@@ -6,10 +6,6 @@
       
         @Html.ActionLink("MechApp", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         }
-        
-        else {
-        @Html.ActionLink("< MechApp", null, null, new { area = "" }, new {href = Request.UrlReferrer, @class="navbar-brand"})
-        }
 
         <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">

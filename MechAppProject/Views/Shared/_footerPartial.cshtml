@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">Wybierz wyloguj aby wylogować się z sesji.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Wróć</button>
+
 
                 @if (Session["Login"] != null)
                 {
@@ -27,6 +27,7 @@
                 {
                     <a class="btn btn-primary" href="@Url.Action("LogoutWorkshop", "Account")">Wyloguj</a>
                 }
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Wróć</button>
             </div>
         </div>
     </div>

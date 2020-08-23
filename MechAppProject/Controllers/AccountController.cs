@@ -95,6 +95,7 @@ namespace MechAppProject.Controllers
         public ActionResult CustomerLogout()
         {
             Session.Abandon();
+            Session.Clear();
             return View("CustomerLogin");
         }
         public ActionResult CustomerProfile()
@@ -258,6 +259,7 @@ namespace MechAppProject.Controllers
         public ActionResult LogoutWorkshop()
         {
             Session.Abandon();
+            Session.Clear();
             return View("WorkshopLogin");
         }
         public ActionResult WorkshopProfile()

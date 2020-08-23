@@ -34,16 +34,6 @@
                             <div class="row no-gutters">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                                     <div class="users-container">
-                                        <div class="chat-search-box">
-                                            <div class="input-group">
-                                                <input class="form-control" placeholder="Search">
-                                                <div class="input-group-btn">
-                                                    <button type="button" class="btn btn-info">
-                                                        <i class="fa fa-search"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <ul class="users">
                                             @if (Model.TemporaryChat)
                                             {
@@ -51,7 +41,7 @@
 
                                                 <li class="person" data-chat="person1">
                                                     <div class="user">
-                                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
+                                                        <img src="~/Content/img/profile.png" />
                                                     </div>
                                                     <p class="name-time">
 
@@ -59,7 +49,7 @@
                                                         <span class="name">
                                                             <a style="color: red;">@Model.CurrentWorkshopName</a>
                                                         </span>
-                                                        <span style="color: red;" class="time">new</span>
+                                                        <span style="color: red;" class="time">nowy</span>
                                                     </p>
                                                 </li>
 
@@ -69,16 +59,17 @@
                                             {
                                                 <li class="person" data-chat="person1">
                                                     <div class="user">
-                                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
+                                                        <img src="~/Content/img/profile.png" />
                                                     </div>
                                                     <p class="name-time">
 
 
                                                         <span class="name">
-                                                            <a class=""href="@Url.Action("Index", "Chat", new { currentChat = chatModel.ChatId })">
+                                                            <a class="" href="@Url.Action("Index", "Chat", new { currentChat = chatModel.ChatId })">
                                                                 @if (!Model.IsCustomer)
                                                                 {
                                                                     @chatModel.CustomerName
+
 
                                                                 }
                                                                 else
@@ -87,7 +78,6 @@
                                                                 }
                                                             </a>
                                                         </span>
-                                                        <span class="time">15/02/2019</span>
                                                     </p>
                                                 </li>
                                             }
@@ -126,13 +116,13 @@
 
                                                     <li class="@(email == message.SentBy ? "chat-right d-flex flex-row" : "chat-left d-flex flex-row-reverse justify-content-end")">
                                                         <br />
-                                                        <div class="chat-hour"><div class="chat-hour">@message.Date.Hour:@message.Date.Minute</div> <span class="ml-2 fa fa-check-circle"></span></div>
+                                                        <div class="chat-hour"><div class="chat-hour">@message.Date.ToString("g")</div> <span class="ml-2 fa fa-check-circle"></span></div>
                                                         <div class="chat-text ">
 
                                                             <br />@message.Message
                                                         </div>
                                                         <div class="chat-avatar">
-                                                            <img class="mx-auto d-block" src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                                            <img class="mx-auto d-block" src="~/Content/img/profile.png" />
                                                             <div class="chat-name">@message.SentBy</div>
                                                         </div>
                                                     </li>
@@ -144,13 +134,13 @@
 
                                                     <li class="@(email == message.SentBy ? "chat-right d-flex flex-row" : "chat-left d-flex flex-row-reverse justify-content-end")">
                                                         <br />
-                                                        <div class="chat-hour"><div class="chat-hour">@message.Date.Hour:@message.Date.Minute</div> <span class="ml-2 fa fa-check-circle"></span></div>
+                                                        <div class="chat-hour"><div class="chat-hour">@message.Date.ToString("g")</div> <span class="ml-2 fa fa-check-circle"></span></div>
                                                         <div class="chat-text ">
 
                                                             <br />@message.Message
                                                         </div>
                                                         <div class="chat-avatar">
-                                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                                            <img class="mx-auto d-block" src="~/Content/img/profile.png" />
                                                             <div class="chat-name">@message.SentBy</div>
                                                         </div>
                                                     </li>
