@@ -1,0 +1,6 @@
+﻿################################################################################
+# Ten plik .gitignore został utworzony automatycznie przez Microsoft(R) Visual Studio.
+################################################################################
+
+/MechAppProject/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+/.vs/FullMVCMechApp/v16
