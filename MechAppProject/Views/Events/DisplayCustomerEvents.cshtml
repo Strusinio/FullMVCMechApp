@@ -5,19 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Twoje rezerwacje</h2>
+    <div class="container navspace">
+        <h3>Twoje naprawy</h3>
+    @foreach (var customerEvent in Model)
+    {
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div><b>Miejsce:</b></div>
+                        <p>@customerEvent.WorkshopName</p>
 
-@foreach (var customerEvent in Model)
-{
-    <div><b>Miejsce:</b></div>
-    <p>@customerEvent.WorkshopName</p>
+                        <div><b>Data:</b></div>
+                        <p>@customerEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @customerEvent.EndDate.ToString("hh:mm")</p>
 
-    <div><b>Data:</b></div>
-    <p>@customerEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @customerEvent.EndDate.ToString("hh:mm")</p>
+                        <div><b>Status:</b></div>
+                        <p>@customerEvent.Status</p>
+                        
 
-    <div><b>Status:</b></div>
-    <p>@customerEvent.Status</p>
-
-    <hr />
-}
-
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

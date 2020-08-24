@@ -59,7 +59,7 @@ namespace MechAppProject.Controllers
 
                     ModelState.Clear();
                     ViewBag.SuccessMessage = "Samochód dodany poprawnie";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("YourCarDetails", "AddCar");
 
                 }
 
@@ -83,6 +83,36 @@ namespace MechAppProject.Controllers
                         var carModel = new CarModel()
                         {
                             CustomerId = userSession.UserId,                                                   
+                            Brand = car.Brand,
+                            Model = car.Model,
+                            EngineType = car.EngineType,
+                        };
+
+                        model.Add(carModel);
+                    }
+
+                }
+            }
+
+            return View(model);
+        }
+
+        public ActionResult CarDelete()
+        {
+            var model = new List<CarModel>();
+            var userSession = Session["Login"] as SessionModel;
+
+            if (userSession != null)
+            {
+                using (var db = new MechAppProjectEntities())
+                {
+                    var cars = db.Cars.Where(x => x.CustomerId == userSession.UserId).ToList();
+
+                    foreach (var car in cars)
+                    {
+                        var carModel = new CarModel()
+                        {
+                            CustomerId = userSession.UserId,
                             Brand = car.Brand,
                             Model = car.Model,
                             EngineType = car.EngineType,

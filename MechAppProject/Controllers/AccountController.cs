@@ -19,13 +19,13 @@ namespace MechAppProject.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Register()
+        public ActionResult CustomerRegister()
         {
             CustomerModel objCustomerModel = new CustomerModel();
             return View(objCustomerModel);
         }
         [HttpPost]
-        public ActionResult Register(CustomerModel objCustomerModel)
+        public ActionResult CustomerRegister(CustomerModel objCustomerModel)
         {
             if (ModelState.IsValid)
             {
@@ -35,14 +35,14 @@ namespace MechAppProject.Controllers
                 if (objMechAppProjectEntities.Customers.Any(x => x.Login == objCustomer.Login))
                 {
                     ViewBag.DuplicateMessageLogin = "Ten Login jest już zajęty!!";
-                    return View("Register", objCustomerModel);
+                    return View("CustomerRegister", objCustomerModel);
                 }
                 objCustomer.Password = objCustomerModel.Password;
                 objCustomer.Email = objCustomerModel.Email;
                 if (objMechAppProjectEntities.Customers.Any(x => x.Email == objCustomer.Email))
                 {
                     ViewBag.DuplicateMessageEmail = "Ten Email jest już zajęty!!";
-                    return View("Register", objCustomerModel);
+                    return View("CustomerRegister", objCustomerModel);
                 }
 
                 objCustomer.Name = objCustomerModel.Name;
@@ -62,14 +62,14 @@ namespace MechAppProject.Controllers
             return View();
 
         }
-        public ActionResult Login()
+        public ActionResult CustomerLogin()
         {
-            WorkshopLoginModel objCustmerLoginModel = new WorkshopLoginModel();
+            LoginModel objCustmerLoginModel = new LoginModel();
             return View(objCustmerLoginModel);
         }
 
         [HttpPost]
-        public ActionResult Login(WorkshopLoginModel objCustmerLoginModel)
+        public ActionResult CustomerLogin(LoginModel objCustmerLoginModel)
         {
             ActionResult result = View();
 
@@ -85,17 +85,18 @@ namespace MechAppProject.Controllers
                 else
                 {
                     ModelState.AddModelError("Error", "Login i haslo nie są poprawne");
-                    result = View("Login");
+                    result = View("CustomerLogin");
                 }
             }
 
             return result;
         }
 
-        public ActionResult Logout()
+        public ActionResult CustomerLogout()
         {
             Session.Abandon();
-            return View("Login");
+            Session.Clear();
+            return View("CustomerLogin");
         }
         public ActionResult CustomerProfile()
         {
@@ -162,7 +163,7 @@ namespace MechAppProject.Controllers
                 {
                     var customerModel = db.Customers.FirstOrDefault(x => x.CustomerId == userSession.UserId);
 
-                    
+
                     customerModel.Password = model.Password;
                     customerModel.Email = model.Email;
                     customerModel.Name = model.Name;
@@ -182,14 +183,14 @@ namespace MechAppProject.Controllers
 
         //////////////////////////////Workshop Part/////////////////////////////////////////////
         [HttpGet]
-        public ActionResult RegisterWorkshop()
+        public ActionResult WorkshopRegister()
         {
             WorkshopModel objWorkshopModel = new WorkshopModel();
             return View(objWorkshopModel);
         }
 
         [HttpPost]
-        public ActionResult RegisterWorkshop(WorkshopModel objWorkshopModel)
+        public ActionResult WorkshopRegister(WorkshopModel objWorkshopModel)
         {
             if (ModelState.IsValid)
             {
@@ -199,14 +200,14 @@ namespace MechAppProject.Controllers
                 if (objMechAppProjectEntities.Workshops.Any(x => x.Login == objWorkshopModel.Login))
                 {
                     ViewBag.DuplicateMessageLogin = "Ten Login jest już zajęty!!";
-                    return View("RegisterWorkshop", objWorkshopModel);
+                    return View("WorkshopRegister", objWorkshopModel);
                 }
                 objWorkshop.Password = objWorkshopModel.Password;
                 objWorkshop.Email = objWorkshopModel.Email;
                 if (objMechAppProjectEntities.Workshops.Any(x => x.Email == objWorkshop.Email))
                 {
                     ViewBag.DuplicateMessageEmail = "Ten Email jest już zajęty!!";
-                    return View("RegisterWorkshop", objWorkshopModel);
+                    return View("WorkshopRegister", objWorkshopModel);
                 }
 
                 objWorkshop.WorkshopName = objWorkshopModel.WorkshopName;
@@ -226,13 +227,13 @@ namespace MechAppProject.Controllers
             return View();
 
         }
-        public ActionResult LoginWorkshop()
+        public ActionResult WorkshopLogin()
         {
-            WorkshopLoginModel objWorkshopLoginModel = new WorkshopLoginModel();
+            LoginModel objWorkshopLoginModel = new LoginModel();
             return View(objWorkshopLoginModel);
         }
         [HttpPost]
-        public ActionResult LoginWorkshop(WorkshopLoginModel objWorkshopLoginModel)
+        public ActionResult WorkshopLogin(LoginModel objWorkshopLoginModel)
         {
             ActionResult result = View();
 
@@ -243,12 +244,12 @@ namespace MechAppProject.Controllers
                 if (currentWorkshop != null)
                 {
                     Session["LoginWorkshop"] = new SessionModel() { WorkshopId = currentWorkshop.WorkshopId, WorkshopLogin = currentWorkshop.Login };
-                    result = RedirectToAction("Index", "Home");
+                    result = RedirectToAction("Index", "Workshop");
                 }
                 else
                 {
                     ModelState.AddModelError("Error", "Login i haslo nie są poprawne");
-                    result = View("LoginWorkshop");
+                    result = View("WorkshopLogin");
                 }
             }
 
@@ -258,7 +259,8 @@ namespace MechAppProject.Controllers
         public ActionResult LogoutWorkshop()
         {
             Session.Abandon();
-            return View("LoginWorkshop");
+            Session.Clear();
+            return View("WorkshopLogin");
         }
         public ActionResult WorkshopProfile()
         {

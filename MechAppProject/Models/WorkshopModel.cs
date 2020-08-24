@@ -13,6 +13,7 @@ namespace MechAppProject.Models
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Login jest wymagany")]
         [Display(Name = "Login: ")]
+        [StringLength(20, ErrorMessage = "{0} dlugosc loginu musi się mieścić między {2} a {1} znaków.", MinimumLength = 6)]
         public string Login { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Nazwa warsztatu jest wymagana")]
         [Display(Name = "Nazwa Warsztatu: ")]
@@ -22,6 +23,7 @@ namespace MechAppProject.Models
         public string OwnerName { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Adres jest wymagany")]
         [Display(Name = "Adres Email: ")]
+        [EmailAddress]
         public string Email { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Miasto jest wymagany")]
         [Display(Name = "Miasto: ")]
@@ -37,6 +39,7 @@ namespace MechAppProject.Models
         public string ZipCode { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Haslo jest wymagane")]
         [Display(Name = "Haslo: ")]
+        [StringLength(20, ErrorMessage = "{0} dlugosc hasla musi się mieścić między {2} a {1} znaków.", MinimumLength = 6)]
         public string Password { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Potwierdz haslo jest wymagane")]
         [Display(Name = "Potwierdz haslo: ")]
@@ -45,6 +48,7 @@ namespace MechAppProject.Models
         public string ConfirmPassword { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Numer telefonu jest wymagany")]
         [Display(Name = "Numer Telefonu: ")]
+        [Phone]
         public string PhoneNbr { get; set; }
 
        

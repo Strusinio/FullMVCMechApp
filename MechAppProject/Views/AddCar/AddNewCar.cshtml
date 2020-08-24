@@ -3,90 +3,52 @@
     ViewBag.Title = "AddNewCar";
 }
 
-<h2>Add Car</h2>
+<div class="container navspace">
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    @using (Html.BeginForm("AddNewCar", "AddCar", FormMethod.Post))
+                        {
 
-<fieldset>
-    <legend>
-        Dodawanie pojazdu
-    </legend>
-    @using (Html.BeginForm("AddNewCar", "AddCar", FormMethod.Post))
-    {
-<table>
-    <tr>
-        <td>
-            @Html.LabelFor(model => model.Brand)
-        </td>
-        <td>
-            @Html.TextBoxFor(model => model.Brand)
-        </td>
-    </tr>
+                            <form class="form-horizontal">
+                                <fieldset class="fieldset">
+                                    <h3 class="fieldset-title">Dodaj nowe auto</h3>
 
-    <tr>
-        <td></td>
-        <td colspan="2">
-            @Html.ValidationMessageFor(model => model.Brand, null, new { @class = "text text-danger" })
-        </td>
-    </tr>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Brand)
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(model => model.Brand, new { @class = "form-control" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Brand, null, new { @class = "text text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Model)
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(model => model.Model, new { @class = "form-control" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Model, null, new { @class = "text text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EngineType)
+                                        <div class="col-xs-12">
+                                            @Html.TextBoxFor(model => model.EngineType, new { @class = "form-control" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.EngineType, null, new { @class = "text text-danger" })
+                                    </div>
+                                </fieldset>
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input class="btn btn-primary " type="submit" value="Dodaj">
+                                    </div>
+                                </div>
+                            </form>
 
-    <tr>
-        <td>
-            @Html.LabelFor(model => model.Model)
-        </td>
-        <td>
-            @Html.TextBoxFor(model => model.Model)
-        </td>
-    </tr>
+                        }
 
-    <tr>
-        <td></td>
-        <td colspan="2">
-            @Html.ValidationMessageFor(model => model.Model, null, new { @class = "text text-danger" })
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            @Html.LabelFor(model => model.EngineType)
-        </td>
-        <td>
-            @Html.TextBoxFor(model => model.EngineType)
-        </td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td colspan="2">
-            @Html.ValidationMessageFor(model => model.EngineType, null, new { @class = "text text-danger" })
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>
-            <table>
-                <tr>
-                    <td>
-                        <input type="submit" value="Dodaj" />
-                    </td>
-                    <td>
-                        <input type="reset" value="Wyczyść" />
-                    </td>
-
-                </tr>
-            </table>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-2">
-                    <label class="label-success">@ViewBag.SuccessMessage</label>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-2">
-                    <label class="label-danger">@ViewBag.DuplicateCar</label>
-                </div>
-            </div>
-        </td>
-    </tr>
-
-</table>
-    }
-</fieldset>
+        </div>
+    </div>
+</div>
 

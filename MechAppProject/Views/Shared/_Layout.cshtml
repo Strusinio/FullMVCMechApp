@@ -1,60 +1,46 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    <title>@ViewBag.Title - MechApp</title>
+    @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/css/styles.css" rel="stylesheet">
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="~/Content/css/fonts.css">
+    <link rel="stylesheet" href="~/Content/css/chat.css">
+    <link rel="stylesheet" href="~/Content/css/mystyles.css" >
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("MechApp", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
 
-                    @if (Session["Login"] == null && Session["LoginWorkshop"] == null)
-                    {
-                        <li>@Html.ActionLink("Lista warsztatów", "Index", "Workshop")</li>
-                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("O aplikacji", "About", "Home")</li>
-                    }
-                    @if (Session["Login"] != null)
-                    {
-                        <li>@Html.ActionLink("Czat", "Index", "Chat")</li>
+    @Html.Partial("_navbarPartial")
 
-                    }
-                    @if (Session["LoginWorkshop"] != null)
-                    {
-                        <li>@Html.ActionLink("Czat", "Index", "Chat")</li>
-                    }
+    @Scripts.Render("~/bundles/jquery")
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+    @RenderBody()
 
-                </ul>
-                @Html.Partial("_loginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @Scripts.Render("~/bundles/jquery")
-        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Moja aplikacja ASP.NET</p>
-        </footer>
-    </div>
+    @Html.Partial("_footerPartial")
 
-    @Scripts.Render("~/Content/animated-event-calendar")
+    @Scripts.Render("~/bundles/animated-event-calendar")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Core theme JS-->
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxh5rgjuQjSO79-Wo26BWSeTqqUyGZo90&callback=initMap"
+        type="text/javascript">
+</script>
+
+
 </body>
 </html>

@@ -5,37 +5,58 @@
 @{
     ViewBag.Title = "YourCarDetails";
 }
+<div class="container navspace">
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h3>Twoje samochody</h3>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Marka
+                            </th>
+                            <th>
+                                Model
+                            </th>
+                            <th>
+                                Typ silnika
+                            </th>
+                            <th></th>
+                        </tr>
 
-<h2>Lista Twoich samochodów: </h2>
+                        @foreach (var item in Model)
+                        {
 
-@foreach (var carYours in Model)
-{
-    <tr>
-        <td>
-            <div>
-                @Html.LabelFor(model => carYours.Brand)
-                @carYours.Brand
+                            <tr>
+                                <td>
+                                    @item.Brand
+                                </td>
+                                <td>
+                                    @item.Model
+                                </td>
+                                <td>
+                                    @item.EngineType
+                                </td>
+                                <td>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CarId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.CarId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.CarId })*@
+                                </td>
+                            </tr>
+
+                            <div style="margin-top: 50px;"></div>
+                        }
+                    </table>
+                </div>
             </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div>
-                @Html.LabelFor(model => carYours.Model)
-                @carYours.Model
+            <div class="form-group">
+                <div class="col-xs-12 ">
+                   <a class="m-1 btn btn-primary" href="@Url.Action("AddNewCar", "AddCar" )">Dodaj</a>
+                </div>
             </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div>
-                @Html.LabelFor(model => carYours.EngineType)
-                @carYours.EngineType
-            </div>
-            
-        </td>
-    </tr>
-    <div style="margin-top: 50px;"></div>
-}
+        </div>
+    </div>
+</div>
 
 

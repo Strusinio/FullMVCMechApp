@@ -16,10 +16,10 @@ namespace MechAppProject.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Marka jest wymagana")]
         [Display(Name = "Marka: ")]
         public string Brand { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Marka jest wymagana")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Model jest wymagany")]
         [Display(Name = "Model: ")]
         public string Model { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Marka jest wymagana")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Typ silnika jest wymagany")]
         [Display(Name = "Typ silnika: ")]
         public string EngineType { get; set; }
 

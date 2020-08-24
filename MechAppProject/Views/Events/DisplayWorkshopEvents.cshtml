@@ -2,40 +2,53 @@
 
 @{
     ViewBag.Title = "DisplayWorkshopEvents";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Rezerwacje</h2>
-
-
-@{
-    var index = 0;
-}
-
-@foreach (var workshopEvent in Model)
-{
-    <div><b>Miejsce:</b></div>
-    <p>@workshopEvent.WorkshopName</p>
-
-    <div><b>Data:</b></div>
-    <p>@workshopEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @workshopEvent.EndDate.ToString("hh:mm")</p>
-
-    using (Html.BeginForm("ChangeEventStatus", "Events", FormMethod.Post))
+    
+    if (Session["LoginWorkshop"] != null)
     {
-        <div><b>Status:</b></div>
 
-        @Html.EnumDropDownListFor(
-            x => x[index].StatusId,
-            "-",
-            new { @class = "form-control" })
-        @Html.HiddenFor(x => x[index].ServiceEventId)
-        <input type="hidden" name="Index" value="@index" />
-
-        <button type="submit" class="btn btn-info" style="margin-top: 10px;">Zmień status</button>
+        Layout = "~/Views/Shared/_WorkshopLayout.cshtml";
     }
-
-    index++;
-
-    <hr />
 }
 
+    <div class="container navspace">
+        <div class="card shadow">
+            <div class="card-body">
+                <h2>Rezerwacje</h2>
+                <div class="row">
+                    <div class="col">
+
+
+
+
+                        @{
+                            var index = 0;
+                        }
+
+                        @foreach (var workshopEvent in Model)
+                        {
+                            <div><b>Miejsce:</b></div>
+                            <p>@workshopEvent.WorkshopName</p>
+
+                            <div><b>Data:</b></div>
+                            <p>@workshopEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @workshopEvent.EndDate.ToString("hh:mm")</p>
+
+                            using (Html.BeginForm("ChangeEventStatus", "Events", FormMethod.Post))
+                            {
+                                <div><b>Status:</b></div>
+
+                                @Html.EnumDropDownListFor(x => x[index].StatusId, "-", new { @class = "form-control" })
+                                @Html.HiddenFor(x => x[index].ServiceEventId)
+                                <input type="hidden" name="Index" value="@index" />
+
+                                <button type="submit" class="btn btn-info" style="margin-top: 10px;">Zmień status</button>
+                            }
+
+                            index++;
+
+                            <hr />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

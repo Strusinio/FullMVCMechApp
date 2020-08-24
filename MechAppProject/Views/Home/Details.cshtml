@@ -1,0 +1,215 @@
+﻿@using MechAppProject.DBModule
+@model Workshop
+
+
+@{
+    ViewBag.Title = "WorkshopView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+       /* Set the size of the div element that contains the map */
+    #map {
+        height: 200px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
+        background-color: grey;
+    }
+</style>
+
+<div class="container navspace">
+
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <img src="~/Content/img/profile.png" class="img-fluid rounded" alt="...">
+
+                </div>
+
+                <div class="col-5">
+                    <div class="">
+                        <h4 class="card-title">@Html.DisplayFor(model => model.WorkshopName)</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.City)</h6>
+                        @*<div class="mt-0">
+            <span class="fa-sm fa fa-star checked"></span>
+            <span class="fa-sm fa fa-star checked"></span>
+            <span class="fa-sm fa fa-star checked"></span>
+            <span class="fa-sm fa fa-star"></span>
+            <span class="fa-sm fa fa-star"></span>
+        </div>
+
+
+        <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <span class="badge badge-secondary">Skoda</span> <span class="badge badge-secondary">Opony</span>*@
+
+                    </div>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-start ">
+                    <!-- Button trigger modal -->
+                    <div><a class="m-1 btn btn-secondary text-white" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-info-circle"></i></a></div>
+                    @if (Session["Login"] != null)
+                    {
+                        <div><a class="m-1 btn btn-primary" href="@Url.Action("AddEvent", "Events", new {workshopId = Model.WorkshopId})">Zarezerwuj</a></div>
+                    }
+                    else
+                    {
+                        <button type="button" class="m-1 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Rezerwacja
+                        </button>
+                    }
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">@Html.DisplayFor(model => model.WorkshopName)</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body pt-0">
+
+                                    
+                                    
+
+                                    <div class="mb-3" id="map"></div>
+                                    <script>
+
+                                        function initMap() {
+
+                                            var location = { lat: 54.504515, lng: 18.536163 };
+
+                                            var map = new google.maps.Map(
+                                                document.getElementById('map'),
+                                                {
+                                                    zoom: 12,
+                                                    center: location,
+                                                    gestureHandling: 'none',
+                                                    zoomControl: false,
+                                                    mapTypeControl: false
+                                                });
+
+                                            var marker = new google.maps.Marker({ position: location, map: map });
+                                        }
+                                    </script>
+
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Kontakt</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#opinion" role="tab" aria-controls="opinion" aria-selected="false">Opinie</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                                            <dl class="dl-horizontal pl-2 pt-4">
+
+                                                <dt>
+                                                    Adres Email
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Email)
+                                                </dd>
+
+                                                <dt>
+                                                    Numer telefonu
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.PhoneNbr)
+                                                </dd>
+
+                                                <dt>
+                                                    Adres
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.ZipCode)
+                                                </dd>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Street) @Html.DisplayFor(model => model.StreetNbr)
+                                                </dd>
+
+
+                                            </dl>
+                                        </div>
+                                        <div class="tab-pane" id="opinion" role="tabpanel" aria-labelledby="opinion-tab">
+                                            Tu mogą być opinie
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Wróć</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="row mt-5">
+
+
+                    <table class="table">
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Opis</th>
+                            <th>Czas</th>
+                            <th>Cena</th>
+
+                        </tr>
+                        @foreach (var item in Model.WorkshopServices)
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DurationInHrs),@Html.DisplayFor(modelItem => item.DurationInMinutes) h
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price) zł
+                        </td>
+                    </tr>
+                        }
+                    </table>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Informacja</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Aby zarezerwować usługę musisz sie zalogować.
+                                </div>
+                                <div class="modal-footer">
+                                    <div><a class="m-1 btn btn-primary" href="@Url.Action("CustomerLogin", "Account")">Zaloguj</a></div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

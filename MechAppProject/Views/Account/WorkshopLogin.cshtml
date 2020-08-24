@@ -1,0 +1,107 @@
+﻿@model MechAppProject.Models.LoginModel
+@{
+    ViewBag.Title = "LoginWorkshop";
+}
+
+
+
+
+<div class="container navspace">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-3 d-none d-lg-block bg-primary"></div>
+                        <div class="col-lg-9">
+                            <div class="p-5">
+
+                                <fieldset>
+                                    <legend>
+                                        <h1 class="h4 text-gray-900 mb-4 text-center">Cześć, zaloguj się do swojego warsztatu</h1>
+                                    </legend>
+                                    @using (Html.BeginForm("WorkshopLogin", "Account", FormMethod.Post, new { @class = "user" }))
+                                    {
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.Login)
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(model => model.Login, new { @class = "form-control form-control-user" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    @Html.ValidationMessageFor(model => model.Login, null, new { @class = "text text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.Password)
+                                                </td>
+                                                <td>
+                                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-user" })
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    @Html.ValidationMessageFor(model => model.Login, null, new { @class = "text text-danger" })
+                                                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text text-danger" })
+                                                    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                    <input class="btn btn-secondary btn-user btn-block clean" type="reset" value="Wyczyść" />
+                                                </td>
+                                                <td>
+                                                    <br />
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+
+                                                                <input class="btn btn-primary btn-user btn-block" type="submit" value="Zaloguj" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+
+
+
+                                        </table>
+                                    }
+                                </fieldset>
+
+                                <hr>
+                                <div class="">
+                                    <div class="float-left">
+                                        @Html.ActionLink("Zarejestruj się jako Warsztat", "WorkshopRegister", "Account", null, null)
+                                    </div>
+                                    <div class="float-right">
+                                        @Html.ActionLink("Zaloguj się jako Klient", "CustomerLogin", "Account", null, null)
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

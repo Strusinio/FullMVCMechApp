@@ -70,7 +70,7 @@ namespace MechAppProject.Controllers
                 }
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("YourServices");
         }
         public ActionResult YourServices()
         {

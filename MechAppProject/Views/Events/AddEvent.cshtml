@@ -4,6 +4,13 @@
     ViewBag.Title = "AddEvent";
 }
 
+    <div class="container navspace">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+
+
 <h2>Zarezerwuj termin</h2>
 
 @using (Html.BeginForm("AddEvent", "Events", FormMethod.Post))
@@ -21,7 +28,7 @@
 
     <div class="form-group">
         @Html.LabelFor(x => x.ServiceDate)
-        @Html.TextBoxFor(x => x.ServiceDate, new { @class = "form-control datepicker", placeholder = "Wybierz datę..." })
+        @Html.TextBoxFor(x => x.ServiceDate, new { @class = "form-control datepicker", placeholder = "Wybierz datę...", @value ="123" })
     </div>
 
     <div class="form-group">
@@ -29,59 +36,67 @@
         @Html.DropDownListFor(x => x.ServiceHours.Value, Model.ServiceHourSelectList, new { @class = "form-control" })
     </div>
 
-    <button class="btn btn-default" type="submit">Zarezerwuj</button>
+    <button class="btn btn-primary" type="submit">Zarezerwuj</button>
 }
 
 <div class="event-calendar" id="event-calendar-id"></div>
 
-<script>
-    var calendarEvents = [];
+                    <script>
+                        var calendarEvents = [];
 
-    $(function () {
-        $(function () { // will trigger when the document is ready
-            $('.datepicker').datepicker(); //Initialise any date pickers
+                        $(function () {
+                            $(function () { // will trigger when the document is ready
+                                $('.datepicker').datepicker({
+                                    dateFormat: 'dd/mm/yy',
+                                    startDate: '-3d'}); //Initialise any date pickers
 
-            calendarEvents = @(Html.Raw(Json.Encode(Model.CalendarEventsJson)));
+                                calendarEvents = @(Html.Raw(Json.Encode(Model.CalendarEventsJson)));
 
-            calendarEvents.forEach(function (entry) {
-                entry.startDate = new Date(parseInt(entry.startDate.replace("/Date(", "").replace(")/",""), 10));
-                entry.endDate = new Date(parseInt(entry.endDate.replace("/Date(", "").replace(")/",""), 10));
-            });
+                                calendarEvents.forEach(function (entry) {
+                                    entry.startDate = new Date(parseInt(entry.startDate.replace("/Date(", "").replace(")/",""), 10));
+                                    entry.endDate = new Date(parseInt(entry.endDate.replace("/Date(", "").replace(")/",""), 10));
+                                });
 
-            $('#event-calendar-id').simpleCalendar({
-                disableEmptyDetails: true,
-                events: calendarEvents,
+                                $('#event-calendar-id').simpleCalendar({
+                                    disableEmptyDetails: true,
+                                    events: calendarEvents,
 
-                onDateSelect: function (date, events) {
-                var eventsEl = $('.event-wrapper > .event');
+                                    onDateSelect: function (date, events) {
+                                        var eventsEl = $('.event-wrapper > .event');
 
-                eventsEl.each(function (index) {
-                    var eventHour = $(this).find('.event-hour');
+                                        eventsEl.each(function (index) {
+                                            var eventHour = $(this).find('.event-hour');
 
-                    var startMinutes = new Date(events[index].startDate).getMinutes();
-                    if (startMinutes < 10) {
-                        startMinutes = "0" + startMinutes.toString();
-                    }
+                                            var startMinutes = new Date(events[index].startDate).getMinutes();
+                                            if (startMinutes < 10) {
+                                                startMinutes = "0" + startMinutes.toString();
+                                            }
 
-                    var startHours = new Date(events[index].startDate).getHours().toString() + ":" + startMinutes;
+                                            var startHours = new Date(events[index].startDate).getHours().toString() + ":" + startMinutes;
 
-                    var endMinutes = new Date(events[index].endDate).getMinutes();
-                    if (endMinutes < 10) {
-                        endMinutes = "0" + endMinutes.toString();
-                    }
+                                            var endMinutes = new Date(events[index].endDate).getMinutes();
+                                            if (endMinutes < 10) {
+                                                endMinutes = "0" + endMinutes.toString();
+                                            }
 
-                    var endHours = new Date(events[index].endDate).getHours().toString() + ":" + endMinutes;
+                                            var endHours = new Date(events[index].endDate).getHours().toString() + ":" + endMinutes;
 
-                    eventHour.html(startHours + " - " + endHours);
-                });
-            }
+                                            eventHour.html(startHours + " - " + endHours);
+                                        });
+                                    }
 
-        });
-        });
-    });
-</script>
+                                });
+                            });
+                        });
+                    </script>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<style>
+                    <style>
     .event-calendar {
         margin-top: 20px;
     }
