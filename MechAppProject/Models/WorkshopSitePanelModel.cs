@@ -21,5 +21,8 @@ namespace MechAppProject.Models
         public string StreetNbr { get; set; }
         public string ZipCode { get; set; }
         public List<WorkshopServiceModel> WorkshopServices { get; set; }
+
+        public WorkshopDescriptionModel WorkshopDescriptionModel { get; set; }
+
     }
 }

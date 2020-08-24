@@ -46,6 +46,14 @@
     <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="OrderStatus" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="WorkshopDescription">
+    <Key>
+      <PropertyRef Name="WorkshopDescriptionID" />
+    </Key>
+    <Property Name="WorkshopDescriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkshopId" Type="int" Nullable="false" />
+    <Property Name="WorkshopDes" Type="text" Nullable="false" />
+  </EntityType>
   <EntityType Name="WorkshopServices">
     <Key>
       <PropertyRef Name="ServiceId" />
@@ -111,6 +119,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__WorkshopD__Works__45F365D3">
+    <End Role="Workshops" Type="Self.Workshops" Multiplicity="1" />
+    <End Role="WorkshopDescription" Type="Self.WorkshopDescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workshops">
+        <PropertyRef Name="WorkshopId" />
+      </Principal>
+      <Dependent Role="WorkshopDescription">
+        <PropertyRef Name="WorkshopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__WorkshopS__Works__1ED998B2">
     <End Role="Workshops" Type="Self.Workshops" Multiplicity="1" />
     <End Role="WorkshopServices" Type="Self.WorkshopServices" Multiplicity="*" />
@@ -152,6 +172,7 @@
     <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ServiceEvent" EntityType="Self.ServiceEvent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkshopDescription" EntityType="Self.WorkshopDescription" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WorkshopServices" EntityType="Self.WorkshopServices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Workshops" EntityType="Self.Workshops" Schema="Workshop" store:Type="Tables" />
     <AssociationSet Name="FK__Car__CustomerId__108B795B" Association="Self.FK__Car__CustomerId__108B795B">
@@ -165,6 +186,10 @@
     <AssociationSet Name="FK__Chat__WorkshopId__0AD2A005" Association="Self.FK__Chat__WorkshopId__0AD2A005">
       <End Role="Workshops" EntitySet="Workshops" />
       <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkshopD__Works__45F365D3" Association="Self.FK__WorkshopD__Works__45F365D3">
+      <End Role="Workshops" EntitySet="Workshops" />
+      <End Role="WorkshopDescription" EntitySet="WorkshopDescription" />
     </AssociationSet>
     <AssociationSet Name="FK__WorkshopS__Works__1ED998B2" Association="Self.FK__WorkshopS__Works__1ED998B2">
       <End Role="Workshops" EntitySet="Workshops" />

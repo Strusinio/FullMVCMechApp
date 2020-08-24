@@ -1,0 +1,52 @@
+﻿@model MechAppProject.Models.WorkshopDescriptionModel
+@{
+    ViewBag.Title = "AddWorkshopDescription";
+}
+
+<h2>Dodaj opis</h2>
+
+<fieldset>
+    <legend>
+        Dodawanie Opisu
+    </legend>
+    @using (Html.BeginForm("AddWorkshopDescription", "Workshop", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.WorkshopDes)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.WorkshopDes)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Dodaj" />
+                            </td>
+                            <td>
+                                <input type="reset" value="Wyczyść" />
+                            </td>
+
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-2">
+                            <label class="label-success">@ViewBag.SuccessMessage</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-2">
+                            <label class="label-danger">@ViewBag.DuplicateCar</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    }
+</fieldset>

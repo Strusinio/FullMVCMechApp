@@ -167,6 +167,9 @@
     <Compile Include="DBModule\Workshop.cs">
       <DependentUpon>CustomerDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModule\WorkshopDescription.cs">
+      <DependentUpon>CustomerDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModule\WorkshopService.cs">
       <DependentUpon>CustomerDBModel.tt</DependentUpon>
     </Compile>
@@ -180,6 +183,7 @@
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\DisplayEventModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
+    <Compile Include="Models\WorkshopDescriptionModel.cs" />
     <Compile Include="Models\WorkshopModel.cs" />
     <Compile Include="Models\WorkshopServiceModel.cs" />
     <Compile Include="Models\WorkshopSitePanelModel.cs" />
@@ -466,6 +470,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Workshop\AddWorkshopDescription.cshtml" />
+    <Content Include="Views\Workshop\YourDescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

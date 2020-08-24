@@ -108,11 +108,16 @@ namespace MechAppProject.Controllers
         public ActionResult WorkshopSitePanel(int workshopId)
         {
             var viewModel = new WorkshopSitePanelModel();
+            var model = new WorkshopDescriptionModel();
 
             using (var db = new MechAppProjectEntities())
             {
                 var workshop = db.Workshops.First(x => x.WorkshopId == workshopId);
                 var workshopServices = db.WorkshopServices.Where(x => x.WorkshopId == workshopId).ToList();
+                var workshopDescription = db.WorkshopDescriptions.First(x => x.WorkshopId == workshopId);
+
+
+                model.WorkshopDes = workshopDescription.WorkshopDes;
 
                 viewModel.ZipCode = workshop.ZipCode;
                 viewModel.WorkshopName = workshop.WorkshopName;
@@ -122,7 +127,7 @@ namespace MechAppProject.Controllers
                 viewModel.OwnerName = workshop.OwerName;
                 viewModel.Email = workshop.Email;
                 viewModel.City = workshop.City;
-                
+
                 foreach (var workshopService in workshopServices)
                 {
                     viewModel.WorkshopServices.Add(new WorkshopServiceModel()
@@ -136,9 +141,71 @@ namespace MechAppProject.Controllers
                         WorkshopId = workshopService.WorkshopId
                     });
                 }
+
+                
+
             }
 
             return View(viewModel);
         }
+        ///
+        [HttpGet]
+        public ActionResult AddWorkshopDescription()
+        {
+            WorkshopDescriptionModel objWorkshopDescriptionModel = new WorkshopDescriptionModel();
+            return View(objWorkshopDescriptionModel);
+        }
+        [HttpPost]
+        public ActionResult AddWorkshopDescription(WorkshopDescriptionModel objWorkshopDescriptionModel)
+        {
+            
+            var userSession = Session["LoginWorkshop"] as SessionModel;
+
+            if (userSession != null)
+            {
+
+
+                using (var db = new MechAppProjectEntities())
+                {
+                    var WorkshopDecrtiptionModel = db.WorkshopDescriptions.Where(x => x.WorkshopDescriptionID == userSession.WorkshopId);
+                    MechAppProjectEntities objMechAppProjectEntities = new MechAppProjectEntities();
+                    WorkshopDescription objWorkshopDescription = new WorkshopDescription
+                    {
+                        WorkshopId = userSession.WorkshopId,
+                        WorkshopDes = objWorkshopDescriptionModel.WorkshopDes
+                    };
+                    
+                    db.WorkshopDescriptions.Add(objWorkshopDescription);
+                    db.SaveChanges();
+
+                    ModelState.Clear();
+                    ViewBag.SuccessMessage = "Opis dodany";
+                    return RedirectToAction("Index", "Home");
+                }
+                
+            }
+
+            return View();
+        }
+        public ActionResult YourDescription()
+        {
+            var model = new WorkshopDescriptionModel();
+            var userSession = Session["LoginWorkshop"] as SessionModel;
+
+            if (userSession != null)
+            {
+                using (var db = new MechAppProjectEntities())
+                {
+                    var workshopDescription = db.WorkshopDescriptions.FirstOrDefault(x => x.WorkshopId == userSession.WorkshopId);
+
+                    model.WorkshopDes = workshopDescription.WorkshopDes;
+                    
+                }
+            }
+
+            return View(model);
+        }
+
     }
+     
 }

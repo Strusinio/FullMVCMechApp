@@ -50,6 +50,11 @@
       <End Role="WorkshopService" EntitySet="WorkshopServices" />
       <End Role="ServiceEvent" EntitySet="ServiceEvents" />
     </AssociationSet>
+    <EntitySet Name="WorkshopDescriptions" EntityType="MechAppProjectModel.WorkshopDescription" />
+    <AssociationSet Name="FK__WorkshopD__Works__45F365D3" Association="MechAppProjectModel.FK__WorkshopD__Works__45F365D3">
+      <End Role="Workshop" EntitySet="Workshops" />
+      <End Role="WorkshopDescription" EntitySet="WorkshopDescriptions" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Workshop">
     <Key>
@@ -68,6 +73,7 @@
     <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Chats" Relationship="MechAppProjectModel.FK__Chat__WorkshopId__0AD2A005" FromRole="Workshop" ToRole="Chat" />
     <NavigationProperty Name="WorkshopServices" Relationship="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" FromRole="Workshop" ToRole="WorkshopService" />
+    <NavigationProperty Name="WorkshopDescriptions" Relationship="MechAppProjectModel.FK__WorkshopD__Works__45F365D3" FromRole="Workshop" ToRole="WorkshopDescription" />
   </EntityType>
   <EntityType Name="Chat">
     <Key>
@@ -188,6 +194,27 @@
       </Principal>
       <Dependent Role="ServiceEvent">
         <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="WorkshopDescription">
+    <Key>
+      <PropertyRef Name="WorkshopDescriptionID" />
+    </Key>
+    <Property Name="WorkshopDescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkshopId" Type="Int32" Nullable="false" />
+    <Property Name="WorkshopDes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Workshop" Relationship="MechAppProjectModel.FK__WorkshopD__Works__45F365D3" FromRole="WorkshopDescription" ToRole="Workshop" />
+  </EntityType>
+  <Association Name="FK__WorkshopD__Works__45F365D3">
+    <End Type="MechAppProjectModel.Workshop" Role="Workshop" Multiplicity="1" />
+    <End Type="MechAppProjectModel.WorkshopDescription" Role="WorkshopDescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workshop">
+        <PropertyRef Name="WorkshopId" />
+      </Principal>
+      <Dependent Role="WorkshopDescription">
+        <PropertyRef Name="WorkshopId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

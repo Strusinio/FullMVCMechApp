@@ -2,8 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
-    <header class=
-        
+<header class=
+
     </header>
 
 @if (Session["Login"] != null)
@@ -24,6 +24,7 @@
     <button type="button" onclick="location.href='@Url.Action("AddService","Workshop")'">Dodaj usługi</button>
     <button type="button" onclick="location.href='@Url.Action("YourServices","Workshop")'">Twoje usługi</button>
     <button type="button" onclick="location.href='@Url.Action("DisplayWorkshopEvents","Events")'">Rezerwacje</button>
-
+    <button type="button" onclick="location.href='@Url.Action("AddWorkshopDescription","Workshop")'">Dodaj opis Warsztatu</button>
+    <button type="button" onclick="location.href='@Url.Action("YourDescription","Workshop")'">Twój Opis</button>
 }
 

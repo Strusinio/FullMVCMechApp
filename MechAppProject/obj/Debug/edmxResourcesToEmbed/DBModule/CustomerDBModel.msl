@@ -82,5 +82,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="WorkshopDescriptions">
+      <EntityTypeMapping TypeName="MechAppProjectModel.WorkshopDescription">
+        <MappingFragment StoreEntitySet="WorkshopDescription">
+          <ScalarProperty Name="WorkshopDes" ColumnName="WorkshopDes" />
+          <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+          <ScalarProperty Name="WorkshopDescriptionID" ColumnName="WorkshopDescriptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
