@@ -22,7 +22,7 @@ namespace MechAppProject.Models
         public string ZipCode { get; set; }
         public List<WorkshopServiceModel> WorkshopServices { get; set; }
 
-        public WorkshopDescriptionModel WorkshopDescriptionModel { get; set; }
+        public WorkshopDescriptionModel WorkshopDescription { get; set; }
 
     }
 }
