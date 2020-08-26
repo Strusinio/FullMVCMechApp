@@ -11,7 +11,8 @@ namespace MechAppProject.DBModule
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class WorkshopService
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +23,29 @@ namespace MechAppProject.DBModule
     
         public int ServiceId { get; set; }
         public int WorkshopId { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Nazwa Us³ugi jest wymagana")]
+        [Display(Name = "Nazwa us³ugi: ")]
+        [StringLength(20, ErrorMessage = "{0} dlugosc musi siê mieœciæ miêdzy {2} a {1} znaków.", MinimumLength = 6)]
         public string Title { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Podaj cenê w z³")]
+        [Display(Name = "Cena w z³: ")]
+        [Range(0, 9999)]
         public int Price { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Podaj d³ugoœæ us³ugi w h")]
+        [Display(Name = "Czas w godzinach ")]
+        [Range(0, 24)]
         public int DurationInHrs { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Opis us³ugi jest wymagana")]
+        [Display(Name = "Opis us³ugi ")]
+        [StringLength(20, ErrorMessage = "{0} dlugosc musi siê mieœciæ miêdzy {2} a {1} znaków.", MinimumLength = 6)]
         public string Description { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Podaj d³ugoœæ us³ugi w min")]
+        [Display(Name = "Czas w minutach ")]
+        [Range(0, 59)]
         public int DurationInMinutes { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Podaj cenê w gr")]
+        [Display(Name = "Cena w gr: ")]
+        [Range(0, 99)]
         public int PriceDecimal { get; set; }
     
         public virtual Workshop Workshop { get; set; }
