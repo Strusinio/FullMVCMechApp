@@ -1,15 +1,15 @@
-﻿@{
-    ViewBag.Title = "Error";
+﻿
+@{
+    ViewBag.Title = "NotFound";
     if (Session["LoginWorkshop"] != null)
     {
 
         Layout = "~/Views/Shared/_WorkshopLayout.cshtml";
     }
 }
-
 <div class="container navspace">
     <div class="card shadow">
-        <div class="card-body ">
+        <div class="card-body">
             <div class="row">
                 <div class="col">
 
@@ -17,13 +17,14 @@
                         Coś poszło nie tak...
                     </h3>
                     <h4>
-                        Wystąpił błąd podczas przetwarzania żądania :(
+                        Przepraszamy, ale wyszukiwana przez Ciebie stora nie została odnaleziona :(
                     </h4>
-                    <br />
-                    <div>@Html.ActionLink("Strona główna", "Index", "Home", null, new { @class = "btn btn-secondary font-weight-bold" })</div>
+                    <br/>
+                    <div>@Html.ActionLink("Strona główna", "Index", "Home", null,new { @class = "btn btn-secondary font-weight-bold" })</div>
                 </div>
             </div>
         </div>
 
     </div>
 </div>
+

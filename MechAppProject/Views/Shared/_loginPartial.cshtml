@@ -64,30 +64,14 @@ else if (Session["LoginWorkshop"] != null)
                     <i class="fas fa-user fa-sm fa-fw mr-2"></i>
                     Panel
                 </a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="@Url.Action("WorkshopProfile", "Account")">
                     <i class="fas fa-user fa-sm fa-fw mr-2"></i>
                     Profil
                 </a>
-                
-                <a class="dropdown-item" href="@Url.Action("WorkshopProfileEdit","Account")">
-                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
-                    Zmień dane workshop
-                </a>
-                
-                <a class="dropdown-item" href="@Url.Action("AddService","Workshop")">
-                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
-                    Dodaj usługi
-                </a>
-                
-                <a class="dropdown-item" href="@Url.Action("YourServices","Workshop")">
-                    <i class="fas fa-user fa-sm fa-fw mr-2"></i>
-                    Twoje usługi
-                </a>
-
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-                    Logout
+                    Wyloguj
                 </a>
             </div>
         </li>

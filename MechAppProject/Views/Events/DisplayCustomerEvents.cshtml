@@ -1,31 +1,104 @@
-﻿@model List<MechAppProject.Models.DisplayEventModel>
+﻿@using System.Diagnostics.Eventing.Reader
+@using PagedList.Mvc
+@model PagedList.IPagedList<MechAppProject.Models.DisplayEventModel>
+<link href="~/Content/css/pagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "DisplayCustomerEvents";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="container navspace">
-        <h3>Twoje naprawy</h3>
-    @foreach (var customerEvent in Model)
-    {
-        <div class="card shadow">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <div><b>Miejsce:</b></div>
-                        <p>@customerEvent.WorkshopName</p>
+<div class="container navspace">
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h3 class="mb-3">Twoje naprawy</h3>
+                    
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row m-3">
+                            @Html.TextBox("SearchString", "Nazwa", new { @class = "form-control col-4" })
+                            <input class="btn btn-secondary ml-3"type="submit" value="Search" />
+                        </div>
+                    }
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Warsztat
+                            </th>
+                            <th>
+                                Czas dostarczenia auta
+                            </th>
+                            <th>
+                                Przewidywany czas odbioru
+                            </th>
+                            <th>
+                                @Html.ActionLink("Status", "DisplayCustomerEvents", new { sortOrder = ViewBag.NameSortParm })
+                            </th>
+                        </tr>
+                        @foreach (var customerEvent in Model)
+                        {
+                    <tr>
 
-                        <div><b>Data:</b></div>
-                        <p>@customerEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @customerEvent.EndDate.ToString("hh:mm")</p>
+                        <td><b href="" class="">@customerEvent.WorkshopName</b></td>
 
-                        <div><b>Status:</b></div>
-                        <p>@customerEvent.Status</p>
-                        
 
-                    </div>
+                        <td>@customerEvent.StartDate.ToString("MM/dd/yyyy ") <b>@customerEvent.StartDate.ToString("hh:mm")</b> </td>
+
+                        <td>@customerEvent.EndDate.ToString("dd/MM/yyyy") <b>@customerEvent.EndDate.ToString("hh:mm") </b></td>
+
+
+                        @if (customerEvent.Status.Contains('G'))
+                        {
+                            <style>
+                                .help {
+                                    color: green;
+                                }
+                            </style>
+
+                            <td class="help">@customerEvent.Status</td>
+                        }
+
+                        else if (customerEvent.Status.Contains('O'))
+                        {
+                            <style>
+                                .help2 {
+                                    color: red;
+                                }
+                            </style>
+
+                            <td class="help2">@customerEvent.Status</td>
+                        }
+
+                        else if (customerEvent.Status.Contains('l'))
+                        {
+                            <style>
+                                .help1 {
+                                    color: orange;
+                                }
+                            </style>
+
+                            <td class="help1">@customerEvent.Status</td>
+                        }
+
+                        else
+                        {
+                            <td class="">@customerEvent.Status</td>
+                        }
+                    </tr>
+
+                        }
+
+
+                    </table>
+
                 </div>
             </div>
         </div>
-    }
     </div>
+    Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("DisplayCustomerEvents", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+

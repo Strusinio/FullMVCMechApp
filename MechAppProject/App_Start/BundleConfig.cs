@@ -16,7 +16,7 @@ namespace MechAppProject
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/animated-event-calendar").Include(
-                        "~/Content/vendor/animated-event-calendar/dist/jquery.simple-calendar.min.js"));
+                        "~/Content/vendor/animated-event-calendar/dist/jquery.simple-calendar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));

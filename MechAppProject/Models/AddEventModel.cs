@@ -11,6 +11,8 @@ namespace MechAppProject.Models
     public class AddEventModel
     {
         [DisplayName("Wybierz datę")]
+        [DataType(DataType.Date)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Data jest wymagana")]
         public DateTime ServiceDate { get; set; }
         public SelectListItem ServiceHours { get; set; }
         [DisplayName("Wybierz godzinę")]

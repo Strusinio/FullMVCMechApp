@@ -158,8 +158,8 @@
             </div>
             <div class="container">
                 <div class="row mt-5">
-
-
+                    <h5 class="mb-3">Oferowane usługi</h5>
+                    <br/>
                     <table class="table">
                         <tr>
                             <th>Nazwa</th>
@@ -178,11 +178,11 @@
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DurationInHrs),@Html.DisplayFor(modelItem => item.DurationInMinutes) h
+                            @Html.DisplayFor(modelItem => item.DurationInHrs).@Html.DisplayFor(modelItem => item.DurationInMinutes) h
 
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Price) zł
+                            @Html.DisplayFor(modelItem => item.Price).@Html.DisplayFor(modelItem => item.PriceDecimal) zł
                         </td>
                     </tr>
                         }

@@ -18,8 +18,48 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Brand)
                                         <div class="col-xs-12">
-                                            @Html.TextBoxFor(model => model.Brand, new { @class = "form-control" })
-                                        </div>
+                                            <div class="col-xs-12">
+                                                <select class="form-control" id="Brand" name="Brand">
+
+                                            <option>Alfa Romeo</option>
+                                            <option>Audi</option>
+                                            <option>BMW</option>
+                                            <option>Chevrolet</option>
+                                            <option>Chrysler</option>
+                                            <option>Citroen</option>
+                                            <option>Dacia</option>
+                                            <option>Fiat</option>
+                                            <option>Ford</option>
+                                            <option>Honda</option>
+                                            <option>Hyundai</option>
+                                            <option>Infiniti</option>
+                                            <option>Jaguar</option>
+                                            <option>Jeep</option>
+                                            <option>Kia</option>
+                                            <option>Lancia</option>
+                                            <option>Land Rover</option>
+                                            <option>Lexus</option>
+                                            <option>MINI</option>
+                                            <option>Mazda</option>
+                                            <option>Mercedes-Benz</option>
+                                            <option>Mitsubishi</option>
+                                            <option>Nissan</option>
+                                            <option>Opel</option>
+                                            <option>Peugeot</option>
+                                            <option>Porsche</option>
+                                            <option>Renault</option>
+                                            <option>SEAT</option>
+                                            <option>Saab</option>
+                                            <option>Skoda</option>
+                                            <option>Ssangyong</option>
+                                            <option>Subaru</option>
+                                            <option>Suzuki</option>
+                                            <option>Toyota</option>
+                                            <option>Volkswagen</option>
+                                            <option>Volvo</option>
+                                                <option>Inna</option>
+                                                </select>
+                                    </div>
                                         @Html.ValidationMessageFor(model => model.Brand, null, new { @class = "text text-danger" })
                                     </div>
                                     <div class="form-group">
@@ -32,7 +72,13 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.EngineType)
                                         <div class="col-xs-12">
-                                            @Html.TextBoxFor(model => model.EngineType, new { @class = "form-control" })
+                                            <select class="form-control" id="EngineType" name="EngineType">
+                                                <option>Benzyna</option>
+                                                <option>Diesel</option>
+                                                <option>LPG</option>
+                                                <option>Elektryczny</option>
+                                                <option>Inne</option>
+                                            </select>
                                         </div>
                                         @Html.ValidationMessageFor(model => model.EngineType, null, new { @class = "text text-danger" })
                                     </div>

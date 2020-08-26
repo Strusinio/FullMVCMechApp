@@ -7,22 +7,22 @@
 
 <div class="container navspace">
 
-<!-- Outer Row -->
-<div class="row justify-content-center">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-<div class=" col-lg-12 col-md-9">
+        <div class=" col-lg-12 col-md-9">
 
-<div class="card o-hidden border-0 shadow-lg my-5">
-<div class="card-body p-0">
-<!-- Nested Row within Card Body -->
-<div class="row">
-<div class="col-sm-4 bg-secondary">
-    <!--left col-->
-    <div class="pt-5 pb-5">
-        <div class="user-info">
-            <img class="rounded-circle img-responsive img-fluid img-profile mx-auto d-block" src="~/Content/img/profile.png" alt="">
-            <br />
-            @*<div class="form-inline">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-sm-4 bg-secondary">
+                            <!--left col-->
+                            <div class="pt-5 pb-5">
+                                <div class="user-info">
+                                    <img class="rounded-circle img-responsive img-fluid img-profile mx-auto d-block" src="~/Content/img/profile.png" alt="">
+                                    <br />
+                                    @*<div class="form-inline">
                                             <form>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="customFile">
@@ -36,193 +36,209 @@
                                         </div>*@
 
 
-        </div>
-
-        <br />
-
-
-
-    </div>
-</div><!--/col-3-->
-
-<div class="col-sm-8">
-    <div class="pt-5 p-4">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#profile">Dane</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#edit">Edycja</a>
-            </li>
-            @*<li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#settings">Ustawienia</a>
-                                        </li>*@
-        </ul>
-
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="profile">
-                <br />
-                <h3 class="fieldset-title">Dane</h3>
-                <table>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.Login)
-                            @Model.Login
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.Password)
-                            @Model.Password
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.Email)
-                            @Model.Email
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.WorkshopName)
-                            @Model.WorkshopName
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.OwnerName)
-                            @Model.OwnerName
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.City)
-                            @Model.City
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.Street)
-                            @Model.Street
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.StreetNbr)
-                            @Model.StreetNbr
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.ZipCode)
-                            @Model.ZipCode
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.LabelFor(model => model.PhoneNbr)
-                            @Model.PhoneNbr
-                        </td>
-                    </tr>
-                </table>
-
-            </div><!--/tab-pane-->
-
-            <div class="tab-pane" id="edit">
-                <br />
-                @using (Html.BeginForm("WorkshopProfileEdit", "Account", FormMethod.Post))
-                {
-                    <form class="form-horizontal">
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Edycja danych</h3>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.WorkshopName)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.WorkshopName, new { @class = "form-control" })
                                 </div>
+
+                                <br />
+
+
+
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.OwnerName)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.OwnerName, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Password)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Email)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.City)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Street)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.Street, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.StreetNbr)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.StreetNbr, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.ZipCode)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.PhoneNbr)
-                                <div class="col-xs-12">
-                                    @Html.TextBoxFor(model => model.PhoneNbr, new { @class = "form-control" })
-                                </div>
-                            </div>
-                        </fieldset>
-                        @*<fieldset class="fieldset">
-                                                        <h3 class="fieldset-title">Contact Info</h3>
+                        </div><!--/col-3-->
+
+                        <div class="col-sm-8">
+                            <div class="pt-5 p-4">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#profile">Dane</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#edit">Edycja</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#settings">Ustawienia</a>
+                                    </li>
+                                </ul>
+
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="profile">
+                                        <br />
+                                        <h3 class="fieldset-title">Dane</h3>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.Login)
+                                                    @Model.Login
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.Email)
+                                                    @Model.Email
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.WorkshopName)
+                                                    @Model.WorkshopName
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.OwnerName)
+                                                    @Model.OwnerName
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.City)
+                                                    @Model.City
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.Street)
+                                                    @Model.Street
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.StreetNbr)
+                                                    @Model.StreetNbr
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.ZipCode)
+                                                    @Model.ZipCode
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.LabelFor(model => model.PhoneNbr)
+                                                    @Model.PhoneNbr
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div><!--/tab-pane-->
+
+                                    <div class="tab-pane" id="edit">
+                                        <br />
+                                        @using (Html.BeginForm("WorkshopProfileEdit", "Account", FormMethod.Post))
+                                        {
+                                            <form class="form-horizontal">
+                                                <fieldset class="fieldset">
+                                                    <h3 class="fieldset-title">Edycja danych</h3>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.WorkshopName)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.WorkshopName, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.OwnerName)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.OwnerName, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    @Html.HiddenFor(model => model.Password)
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Email)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.City)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Street)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.Street, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.StreetNbr)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.StreetNbr, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.ZipCode)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.PhoneNbr)
+                                                        <div class="col-xs-12">
+                                                            @Html.TextBoxFor(model => model.PhoneNbr, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <input class="btn btn-primary" type="submit" value="Zaktualizuj">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        }
+                                    </div>
+
+                                    <div class="tab-pane" id="settings">
+                                        <br />
+                                        <div class="tab-pane" id="settings">
+                                            <br />
+                                            @using (Html.BeginForm("WorkshopProfileEdit", "Account", FormMethod.Post))
+                                            {
+                                                <form class="form-horizontal">
+                                                    <fieldset class="fieldset">
+                                                        <h3 class="fieldset-title">Zmiana hasła</h3>
+
+                                                        @Html.HiddenFor(model => model.WorkshopName)
+                                                        @Html.HiddenFor(model => model.OwnerName)
+                                                        @Html.HiddenFor(model => model.Email)
+                                                        @Html.HiddenFor(model => model.City)
+                                                        @Html.HiddenFor(model => model.Street)
+                                                        @Html.HiddenFor(model => model.StreetNbr)
+                                                        @Html.HiddenFor(model => model.ZipCode)
+                                                        @Html.HiddenFor(model => model.PhoneNbr)
+
                                                         <div class="form-group">
-                                                            <label class="col-xs-12 control-label">Email</label>
+                                                            @Html.LabelFor(model => model.Password)
                                                             <div class="col-xs-12">
-                                                                <input type="email" class="form-control" value="@Model.Email">
+                                                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password" })
                                                             </div>
                                                         </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.ConfirmPassword)
+                                                            <div class="col-xs-12">
+                                                                @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", type="password" })
+                                                            </div>
+                                                            @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text text-danger" })
+                                                        </div>
+                                                    </fieldset>
+                                                    <div class="form-group">
+                                                        <div class="col-xs-12">
+                                                            <input class="btn btn-primary" type="submit" value="Zmień hasło">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            }
 
-                                                    </fieldset>*@
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input class="btn btn-primary" type="submit" value="Zaktualizuj">
-                            </div>
+                                        </div>
+                                    </div><!--/tab-pane-->
+                                </div><!--/tab-pane-->
+                            </div><!--/tab-content-->
                         </div>
-                    </form>
-                }
+                    </div>
+                </div>
             </div>
-
-            <div class="tab-pane" id="settings">
-                <br />
-
-                Ustawienia
-
-            </div><!--/tab-pane-->
-        </div><!--/tab-pane-->
-    </div><!--/tab-content-->
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+        </div>
+    </div>
 </div>

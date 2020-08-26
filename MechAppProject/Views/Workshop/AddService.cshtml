@@ -12,44 +12,56 @@
 
 <div class="container navspace">
     <div class="card shadow">
-        
+
         <div class="card-body">
             <h2>Dodaj usuługe</h2>
             <div class="row">
                 <div class="col">
                     @using (Html.BeginForm("AddService", "Workshop", FormMethod.Post))
                     {
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.Title)
-                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
-                        </div>
+                        <form>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Title)
+                                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                            </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.Description)
-                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
-                        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Description)
+                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                            </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.Price)
-                            @Html.EditorFor(x => x.Price, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.PriceDecimal)
-                            @Html.EditorFor(x => x.PriceDecimal, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.DurationInHours)
-                            @Html.EditorFor(x => x.DurationInHours, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(x => x.DurationInMinutes)
-                            @Html.EditorFor(x => x.DurationInMinutes, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
-                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.Price)
+                                        @Html.EditorFor(x => x.Price, new {htmlAttributes = new {@type = "number", @min = "0", @step = "1", @class = "form-control"}})
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        @Html.LabelFor(x => x.PriceDecimal)
+                                        @Html.EditorFor(x => x.PriceDecimal, new {htmlAttributes = new {@type = "number", @min = "0", @step = "1", @class = "form-control"}})
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.DurationInHours)
+                                    @Html.EditorFor(x => x.DurationInHours, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="col">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.DurationInMinutes)
+                                @Html.EditorFor(x => x.DurationInMinutes, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @class = "form-control" } })
+                            </div>
+                            </div>
+                            </div>
+                        </form>
 
                         <button type="submit" class="btn btn-primary">Dodaj</button>
+
                     }
                 </div>
             </div>

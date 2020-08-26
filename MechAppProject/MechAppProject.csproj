@@ -130,6 +130,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddCarController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\ErrorControler.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
@@ -2316,10 +2317,11 @@
     <Content Include="Views\Account\WorkshopProfileEdit.cshtml" />
     <Content Include="Views\Account\WorkshopRegister.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Car\" />
+    <Folder Include="Views\ErrorControler\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
