@@ -24,7 +24,7 @@ namespace MechAppProject.Models
         [DisplayName("Wybierz samochód")]
         public SelectList CustomerCarsSelectList { get; set; }
         public List<CalendarEventJson> CalendarEventsJson { get; set; }
-        
+
     }
 
     public class CalendarEventJson
@@ -43,7 +43,9 @@ namespace MechAppProject.Models
         [Display(Name = "Odrzucono")]
         OrderRefuse = 3,
         [Display(Name = "Gotowy")]
-        OrderReadyToCollect = 4
-        
+        OrderReadyToCollect = 4,
+        [Display(Name = "Zakończony")]
+        OrderDone = 5
+
     }
 }

@@ -227,13 +227,13 @@
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.Password)
                                                         <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password" })
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.ConfirmPassword)
                                                         <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                                                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", type="password" })
                                                         </div>
                                                         @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text text-danger" })
                                                     </div>

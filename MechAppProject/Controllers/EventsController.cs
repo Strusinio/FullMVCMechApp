@@ -123,6 +123,7 @@ namespace MechAppProject.Controllers
         // GET: Events
         public ActionResult AddEvent(int workshopId)
         {
+
             var session = Session["Login"] as SessionModel;
             var viewModel = new AddEventModel();
 
@@ -160,6 +161,7 @@ namespace MechAppProject.Controllers
 
             if (session != null)
             {
+
                 using (var db = new MechAppProjectEntities())
                 {
                     var serviceId = Convert.ToInt32(viewModel.WorkshopService.Value);
@@ -167,7 +169,7 @@ namespace MechAppProject.Controllers
                     var serviceStartTime = viewModel.ServiceHours.Value.Split(':');
 
                     var startDate = viewModel.ServiceDate + new TimeSpan(Convert.ToInt32(serviceStartTime[0]), Convert.ToInt32(serviceStartTime[1]), 0);
-                    var endDate = startDate + new TimeSpan(service.DurationInHrs, service.DurationInMinutes, 0);
+                    var endDate = startDate + new TimeSpan(service.DurationInHours, service.DurationInMinutes, 0);
 
                     var serviceEventModel = new ServiceEvent()
                     {
@@ -178,8 +180,10 @@ namespace MechAppProject.Controllers
                         EndDate = endDate
                     };
 
+
                     db.ServiceEvents.Add(serviceEventModel);
                     db.SaveChanges();
+
                 }
             }
 

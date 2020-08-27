@@ -124,6 +124,10 @@ div .chat-container {
     height: 200px;
 }
 
+.img-logo {
+    height: 50px;
+}
+
 #profile table tr td label {
     font-weight: bold;
     color: dimgrey;

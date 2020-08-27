@@ -1,7 +1,6 @@
 ﻿@using MechAppProject.DBModule
 @model Workshop
 
-
 @{
     ViewBag.Title = "WorkshopView";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -43,7 +42,13 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <span class="badge badge-secondary">Skoda</span> <span class="badge badge-secondary">Opony</span>*@
+                        @foreach (var item in Model.WorkshopDescriptions)
+                        {
 
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => item.WorkshopDes)</p>
+
+                        }
                     </div>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-start ">
@@ -178,7 +183,7 @@
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DurationInHrs).@Html.DisplayFor(modelItem => item.DurationInMinutes) h
+                            @Html.DisplayFor(modelItem => item.DurationInHours).@Html.DisplayFor(modelItem => item.DurationInMinutes) h
 
                         </td>
                         <td>

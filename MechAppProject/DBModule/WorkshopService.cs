@@ -24,13 +24,13 @@ namespace MechAppProject.DBModule
         public int WorkshopId { get; set; }
         public string Title { get; set; }
         public int Price { get; set; }
-        public int DurationInHrs { get; set; }
+        public int DurationInHours { get; set; }
         public string Description { get; set; }
         public int DurationInMinutes { get; set; }
         public int PriceDecimal { get; set; }
     
-        public virtual Workshop Workshop { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceEvent> ServiceEvents { get; set; }
+        public virtual Workshop Workshop { get; set; }
     }
 }

@@ -56,20 +56,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="WorkshopServices">
-      <EntityTypeMapping TypeName="IsTypeOf(MechAppProjectModel.WorkshopService)">
-        <MappingFragment StoreEntitySet="WorkshopServices">
-          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
-          <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="DurationInHrs" ColumnName="DurationInHrs" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
-          <ScalarProperty Name="PriceDecimal" ColumnName="PriceDecimal" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ServiceEvents">
       <EntityTypeMapping TypeName="IsTypeOf(MechAppProjectModel.ServiceEvent)">
         <MappingFragment StoreEntitySet="ServiceEvents">
@@ -79,6 +65,29 @@
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkshopDescriptions">
+      <EntityTypeMapping TypeName="MechAppProjectModel.WorkshopDescription">
+        <MappingFragment StoreEntitySet="WorkshopDescription">
+          <ScalarProperty Name="WorkshopDes" ColumnName="WorkshopDes" />
+          <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+          <ScalarProperty Name="WorkshopDescriptionID" ColumnName="WorkshopDescriptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkshopServices">
+      <EntityTypeMapping TypeName="MechAppProjectModel.WorkshopService">
+        <MappingFragment StoreEntitySet="WorkshopServices">
+          <ScalarProperty Name="PriceDecimal" ColumnName="PriceDecimal" />
+          <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DurationInHours" ColumnName="DurationInHours" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

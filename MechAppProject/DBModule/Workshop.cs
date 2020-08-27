@@ -18,6 +18,7 @@ namespace MechAppProject.DBModule
         public Workshop()
         {
             this.Chats = new HashSet<Chat>();
+            this.WorkshopDescriptions = new HashSet<WorkshopDescription>();
             this.WorkshopServices = new HashSet<WorkshopService>();
         }
     
@@ -35,6 +36,8 @@ namespace MechAppProject.DBModule
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chat> Chats { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WorkshopDescription> WorkshopDescriptions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkshopService> WorkshopServices { get; set; }
     }

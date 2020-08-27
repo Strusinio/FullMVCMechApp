@@ -64,6 +64,11 @@ namespace MechAppProject.Code.Helpers
                         result = "Gotowy do odbioru";
                         break;
                     }
+                case OrderStatus.OrderDone:
+                    {
+                        result = "Zakończone";
+                        break;
+                    }
                 default: break;
             }
 

@@ -1,0 +1,17 @@
+﻿@model MechAppProject.Models.WorkshopDescriptionModel
+
+@{
+    ViewBag.Title = "YourDescription";
+}
+
+<h2>Twoj opis</h2>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.WorkshopDes)
+            @Model.WorkshopDes
+        </td>
+    </tr>
+</table>
+
+

@@ -36,19 +36,24 @@
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Car" EntitySet="Cars" />
     </AssociationSet>
-    <EntitySet Name="WorkshopServices" EntityType="MechAppProjectModel.WorkshopService" />
-    <AssociationSet Name="FK__WorkshopS__Works__1ED998B2" Association="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2">
-      <End Role="Workshop" EntitySet="Workshops" />
-      <End Role="WorkshopService" EntitySet="WorkshopServices" />
-    </AssociationSet>
     <EntitySet Name="ServiceEvents" EntityType="MechAppProjectModel.ServiceEvent" />
     <AssociationSet Name="FK_ServiceEvent_Customers" Association="MechAppProjectModel.FK_ServiceEvent_Customers">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="ServiceEvent" EntitySet="ServiceEvents" />
     </AssociationSet>
+    <EntitySet Name="WorkshopDescriptions" EntityType="MechAppProjectModel.WorkshopDescription" />
+    <AssociationSet Name="FK__WorkshopD__Works__6E01572D" Association="MechAppProjectModel.FK__WorkshopD__Works__6E01572D">
+      <End Role="Workshop" EntitySet="Workshops" />
+      <End Role="WorkshopDescription" EntitySet="WorkshopDescriptions" />
+    </AssociationSet>
+    <EntitySet Name="WorkshopServices" EntityType="MechAppProjectModel.WorkshopService" />
     <AssociationSet Name="FK_ServiceEvent_WorkshopServices" Association="MechAppProjectModel.FK_ServiceEvent_WorkshopServices">
       <End Role="WorkshopService" EntitySet="WorkshopServices" />
       <End Role="ServiceEvent" EntitySet="ServiceEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkshopS__Works__1ED998B2" Association="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2">
+      <End Role="Workshop" EntitySet="Workshops" />
+      <End Role="WorkshopService" EntitySet="WorkshopServices" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Workshop">
@@ -67,6 +72,7 @@
     <Property Name="StreetNbr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Chats" Relationship="MechAppProjectModel.FK__Chat__WorkshopId__0AD2A005" FromRole="Workshop" ToRole="Chat" />
+    <NavigationProperty Name="WorkshopDescriptions" Relationship="MechAppProjectModel.FK__WorkshopD__Works__6E01572D" FromRole="Workshop" ToRole="WorkshopDescription" />
     <NavigationProperty Name="WorkshopServices" Relationship="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" FromRole="Workshop" ToRole="WorkshopService" />
   </EntityType>
   <EntityType Name="Chat">
@@ -127,33 +133,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="WorkshopService">
-    <Key>
-      <PropertyRef Name="ServiceId" />
-    </Key>
-    <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="WorkshopId" Type="Int32" Nullable="false" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Price" Type="Int32" Nullable="false" />
-    <Property Name="DurationInHrs" Type="Int32" Nullable="false" />
-    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="DurationInMinutes" Type="Int32" Nullable="false" />
-    <Property Name="PriceDecimal" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Workshop" Relationship="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" FromRole="WorkshopService" ToRole="Workshop" />
-    <NavigationProperty Name="ServiceEvents" Relationship="MechAppProjectModel.FK_ServiceEvent_WorkshopServices" FromRole="WorkshopService" ToRole="ServiceEvent" />
-  </EntityType>
-  <Association Name="FK__WorkshopS__Works__1ED998B2">
-    <End Type="MechAppProjectModel.Workshop" Role="Workshop" Multiplicity="1" />
-    <End Type="MechAppProjectModel.WorkshopService" Role="WorkshopService" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Workshop">
-        <PropertyRef Name="WorkshopId" />
-      </Principal>
-      <Dependent Role="WorkshopService">
-        <PropertyRef Name="WorkshopId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="ServiceEvent">
     <Key>
       <PropertyRef Name="ServiceEventId" />
@@ -179,6 +158,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="WorkshopDescription">
+    <Key>
+      <PropertyRef Name="WorkshopDescriptionID" />
+    </Key>
+    <Property Name="WorkshopDescriptionID" Type="Int32" Nullable="false" />
+    <Property Name="WorkshopId" Type="Int32" Nullable="false" />
+    <Property Name="WorkshopDes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Workshop" Relationship="MechAppProjectModel.FK__WorkshopD__Works__6E01572D" FromRole="WorkshopDescription" ToRole="Workshop" />
+  </EntityType>
+  <Association Name="FK__WorkshopD__Works__6E01572D">
+    <End Type="MechAppProjectModel.Workshop" Role="Workshop" Multiplicity="1" />
+    <End Type="MechAppProjectModel.WorkshopDescription" Role="WorkshopDescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workshop">
+        <PropertyRef Name="WorkshopId" />
+      </Principal>
+      <Dependent Role="WorkshopDescription">
+        <PropertyRef Name="WorkshopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="WorkshopService">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkshopId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="DurationInHours" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DurationInMinutes" Type="Int32" Nullable="false" />
+    <Property Name="PriceDecimal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceEvents" Relationship="MechAppProjectModel.FK_ServiceEvent_WorkshopServices" FromRole="WorkshopService" ToRole="ServiceEvent" />
+    <NavigationProperty Name="Workshop" Relationship="MechAppProjectModel.FK__WorkshopS__Works__1ED998B2" FromRole="WorkshopService" ToRole="Workshop" />
+  </EntityType>
   <Association Name="FK_ServiceEvent_WorkshopServices">
     <End Type="MechAppProjectModel.WorkshopService" Role="WorkshopService" Multiplicity="1" />
     <End Type="MechAppProjectModel.ServiceEvent" Role="ServiceEvent" Multiplicity="*" />
@@ -188,6 +203,18 @@
       </Principal>
       <Dependent Role="ServiceEvent">
         <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkshopS__Works__1ED998B2">
+    <End Type="MechAppProjectModel.Workshop" Role="Workshop" Multiplicity="1" />
+    <End Type="MechAppProjectModel.WorkshopService" Role="WorkshopService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workshop">
+        <PropertyRef Name="WorkshopId" />
+      </Principal>
+      <Dependent Role="WorkshopService">
+        <PropertyRef Name="WorkshopId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -61,7 +61,7 @@ namespace MechAppProject.Controllers
                         Description = viewModel.Description,
                         Price = viewModel.Price.HasValue ? viewModel.Price.Value : 0,
                         PriceDecimal = viewModel.PriceDecimal.HasValue ? viewModel.PriceDecimal.Value : 0,
-                        DurationInHrs = viewModel.DurationInHours.HasValue ? viewModel.DurationInHours.Value : 0,
+                        DurationInHours = viewModel.DurationInHours.HasValue ? viewModel.DurationInHours.Value : 0,
                         DurationInMinutes = viewModel.DurationInMinutes.HasValue ? viewModel.DurationInMinutes.Value : 0
                     };
 
@@ -92,7 +92,7 @@ namespace MechAppProject.Controllers
                             Description = workshopService.Description,
                             Price = workshopService.Price,
                             PriceDecimal = workshopService.PriceDecimal,
-                            DurationInHours = workshopService.DurationInHrs,
+                            DurationInHours = workshopService.DurationInHours,
                             DurationInMinutes = workshopService.DurationInMinutes,
                         };
 
@@ -128,7 +128,7 @@ namespace MechAppProject.Controllers
                     viewModel.WorkshopServices.Add(new WorkshopServiceModel()
                     {
                         Description = workshopService.Description,
-                        DurationInHours = workshopService.DurationInHrs,
+                        DurationInHours = workshopService.DurationInHours,
                         DurationInMinutes = workshopService.DurationInMinutes,
                         Price = workshopService.Price,
                         PriceDecimal = workshopService.PriceDecimal,
@@ -140,5 +140,62 @@ namespace MechAppProject.Controllers
 
             return View(viewModel);
         }
+
+        [HttpGet]
+        public ActionResult AddWorkshopDescription()
+        {
+            WorkshopDescriptionModel objWorkshopDescriptionModel = new WorkshopDescriptionModel();
+            return View(objWorkshopDescriptionModel);
+        }
+        [HttpPost]
+        public ActionResult AddWorkshopDescription(WorkshopDescriptionModel objWorkshopDescriptionModel)
+        {
+
+            var userSession = Session["LoginWorkshop"] as SessionModel;
+
+            if (userSession != null)
+            {
+
+
+                using (var db = new MechAppProjectEntities())
+                {
+                    var WorkshopDecrtiptionModel = db.WorkshopDescriptions.Where(x => x.WorkshopDescriptionID == userSession.WorkshopId);
+                    MechAppProjectEntities objMechAppProjectEntities = new MechAppProjectEntities();
+                    WorkshopDescription objWorkshopDescription = new WorkshopDescription
+                    {
+                        WorkshopId = userSession.WorkshopId,
+                        WorkshopDes = objWorkshopDescriptionModel.WorkshopDes
+                    };
+
+                    db.WorkshopDescriptions.Add(objWorkshopDescription);
+                    db.SaveChanges();
+
+                    ModelState.Clear();
+                    ViewBag.SuccessMessage = "Opis dodany";
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }
+
+            return View();
+        }
+        public ActionResult YourDescription()
+        {
+            var model = new WorkshopDescriptionModel();
+            var userSession = Session["LoginWorkshop"] as SessionModel;
+
+            
+                using (var db = new MechAppProjectEntities())
+                {
+                    var workshopDescription = db.WorkshopDescriptions.FirstOrDefault(x => x.WorkshopId == userSession.WorkshopId);
+
+                    model.WorkshopDes = workshopDescription.WorkshopDes;
+
+                }
+
+                return View(model);
+        }
+
+
     }
 }
