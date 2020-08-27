@@ -1,6 +1,9 @@
 ﻿@using MechAppProject.Models
 
-@model List<WorkshopServiceModel>
+@using System.Diagnostics.Eventing.Reader
+@using PagedList.Mvc
+@model PagedList.IPagedList<WorkshopServiceModel>
+<link href="~/Content/css/pagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "WorkshopServiceModel";
@@ -52,7 +55,7 @@
 
                                 <td>
                                     <div>
-                                        @(workshopService.Price).@workshopService.PriceDecimal 
+                                        @(workshopService.Price).@workshopService.PriceDecimal
                                     </div>
                                 </td>
 
@@ -67,13 +70,17 @@
                         }
 
                     </table>
+                    Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("YourServices", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-xs-12 ">
-                    <a class="m-1 btn btn-primary" href="@Url.Action("AddService", "Workshop" )">Dodaj</a>
-                </div>
-            </div>
+            
+        </div>
+    </div>
+    <div class="form-group align-content-end">
+        <div class="col-xs-12 d-block">
+            <a class="m-1 btn btn-primary" href="@Url.Action("AddService", "Workshop" )">Dodaj</a>
         </div>
     </div>
 </div>

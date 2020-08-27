@@ -1,4 +1,7 @@
-﻿@model List<MechAppProject.Models.DisplayEventModel>
+﻿@using System.Diagnostics.Eventing.Reader
+@using PagedList.Mvc
+@model PagedList.IPagedList<MechAppProject.Models.DisplayEventModel>
+<link href="~/Content/css/pagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "DisplayWorkshopEvents";
@@ -11,12 +14,7 @@
 }
 
     <div class="container navspace">
-        <div class="card shadow">
-            <div class="card-body">
-                <h2>Rezerwacje</h2>
-                <div class="row">
-                    <div class="col">
-
+        <h2>Rezerwacje</h2>
 
 
 
@@ -26,13 +24,21 @@
 
                         @foreach (var workshopEvent in Model)
                         {
-                            <div><b>Miejsce:</b></div>
-                            <p>@workshopEvent.WorkshopName</p>
+                            <div class="card shadow">
+                                <div class="card-body">
+ 
+                                    <div class="row">
+                                        <div class="col">
 
-                            <div><b>Data:</b></div>
+                            <div><b>Klient</b></div>
+                            <p>@workshopEvent.CustomerName</p>
+                                            
+                                            
+
+                                            <div><b>Data:</b></div>
                             <p>@workshopEvent.StartDate.ToString("MM/dd/yyyy hh:mm") - @workshopEvent.EndDate.ToString("hh:mm")</p>
 
-                            using (Html.BeginForm("ChangeEventStatus", "Events", FormMethod.Post))
+                            @using (Html.BeginForm("ChangeEventStatus", "Events", FormMethod.Post))
                             {
                                 <div><b>Status:</b></div>
 
@@ -42,13 +48,18 @@
 
                                 <button type="submit" class="btn btn-info" style="margin-top: 10px;">Zmień status</button>
                             }
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             index++;
 
-                            <hr />
                         }
-                    </div>
-                </div>
-            </div>
-        </div>
+                        
+                        Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+
+                        @Html.PagedListPager(Model, page => Url.Action("DisplayWorkshopEvents", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
+

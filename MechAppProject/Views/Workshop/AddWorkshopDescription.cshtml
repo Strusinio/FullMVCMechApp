@@ -1,6 +1,12 @@
 ﻿@model MechAppProject.Models.WorkshopDescriptionModel
 @{
     ViewBag.Title = "AddWorkshopDescription";
+
+    if (Session["LoginWorkshop"] != null)
+    {
+
+        Layout = "~/Views/Shared/_WorkshopLayout.cshtml";
+    }
 }
 
 <h2>Dodaj opis</h2>

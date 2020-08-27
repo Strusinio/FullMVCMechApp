@@ -77,37 +77,27 @@
                                 </div>
                                 <div class="modal-body pt-0">
 
+
+
+
+                                    <div class="mb-3" id="map">
+                         
                                     
-                                    
+                                        <iframe frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"
 
-                                    <div class="mb-3" id="map"></div>
-                                    <script>
-
-                                        function initMap() {
-
-                                            var location = { lat: 54.504515, lng: 18.536163 };
-
-                                            var map = new google.maps.Map(
-                                                document.getElementById('map'),
-                                                {
-                                                    zoom: 12,
-                                                    center: location,
-                                                    gestureHandling: 'none',
-                                                    zoomControl: false,
-                                                    mapTypeControl: false
-                                                });
-
-                                            var marker = new google.maps.Marker({ position: location, map: map });
-                                        }
-                                    </script>
+                                            frameborder="0" style="border:0"
+                                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCxh5rgjuQjSO79-Wo26BWSeTqqUyGZo90
+    &q=@Model.Street,@Model.City" allowfullscreen>
+                                        </iframe>
+                                    </div>
 
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Kontakt</a>
                                         </li>
-                                        <li class="nav-item">
+                                        @*<li class="nav-item">
                                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#opinion" role="tab" aria-controls="opinion" aria-selected="false">Opinie</a>
-                                        </li>
+                                        </li>*@
                                     </ul>
 
                                     <!-- Tab panes -->
