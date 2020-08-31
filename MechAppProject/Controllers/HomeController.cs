@@ -63,7 +63,7 @@ namespace MechAppProject.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                workshopsView = workshopsView.Where(w => w.WorkshopName.Contains(searchString) || w.City.Contains(searchString)); ;
+                workshopsView = workshopsView.Where(w => w.WorkshopName.ToLower().Contains(searchString.ToLower()) || w.City.ToLower().Contains(searchString.ToLower())); ;
             }
 
             switch (sortOrder)

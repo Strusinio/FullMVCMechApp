@@ -82,6 +82,7 @@ namespace MechAppProject.Controllers
                     {
                         var carModel = new CarModel()
                         {
+                            CarId = car.CarId,
                             CustomerId = userSession.UserId,                                                   
                             Brand = car.Brand,
                             Model = car.Model,
@@ -97,34 +98,47 @@ namespace MechAppProject.Controllers
             return View(model);
         }
 
-        public ActionResult CarDelete()
+        public ActionResult DeleteCar(int carId)
         {
-            var model = new List<CarModel>();
-            var userSession = Session["Login"] as SessionModel;
-
-            if (userSession != null)
+            using (var db = new MechAppProjectEntities())
             {
-                using (var db = new MechAppProjectEntities())
-                {
-                    var cars = db.Cars.Where(x => x.CustomerId == userSession.UserId).ToList();
+                var car = db.Cars.First(x => x.CarId == carId);
 
-                    foreach (var car in cars)
-                    {
-                        var carModel = new CarModel()
-                        {
-                            CustomerId = userSession.UserId,
-                            Brand = car.Brand,
-                            Model = car.Model,
-                            EngineType = car.EngineType,
-                        };
-
-                        model.Add(carModel);
-                    }
-
-                }
+                db.Cars.Remove(car);
+                db.SaveChanges();
             }
 
-            return View(model);
+            return Json(new { success = true, carId = carId }, JsonRequestBehavior.AllowGet);
         }
+
+        //public ActionResult CarDelete()
+        //{
+        //    var model = new List<CarModel>();
+        //    var userSession = Session["Login"] as SessionModel;
+
+        //    if (userSession != null)
+        //    {
+        //        using (var db = new MechAppProjectEntities())
+        //        {
+        //            var cars = db.Cars.Where(x => x.CustomerId == userSession.UserId).ToList();
+
+        //            foreach (var car in cars)
+        //            {
+        //                var carModel = new CarModel()
+        //                {
+        //                    CustomerId = userSession.UserId,
+        //                    Brand = car.Brand,
+        //                    Model = car.Model,
+        //                    EngineType = car.EngineType,
+        //                };
+
+        //                model.Add(carModel);
+        //            }
+
+        //        }
+        //    }
+
+        //    return View(model);
+        //}
     }
 }

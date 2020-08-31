@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col">
                     <h3>Twoje samochody</h3>
-                    <table class="table">
+                    <table class="table" style="margin-bottom: 50px;">
                         <tr>
                             <th>
                                 Marka
@@ -27,8 +27,7 @@
 
                         @foreach (var item in Model)
                         {
-
-                            <tr>
+                            <tr class="car-data-@item.CarId">
                                 <td>
                                     @item.Brand
                                 </td>
@@ -39,24 +38,61 @@
                                     @item.EngineType
                                 </td>
                                 <td>
-                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CarId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.CarId }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.CarId })*@
+                                    <span class="car-remove" data-id="@item.CarId">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </span>
                                 </td>
                             </tr>
-
-                            <div style="margin-top: 50px;"></div>
                         }
                     </table>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-12 ">
-                   <a class="m-1 btn btn-primary" href="@Url.Action("AddNewCar", "AddCar" )">Dodaj</a>
+                    <a class="m-1 btn btn-primary" href="@Url.Action("AddNewCar", "AddCar" )">Dodaj</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .car-remove {
+        cursor: pointer;
+        transition: 0.2s;
+        font-size: 20px;
+    }
+
+    .car-remove:hover {
+        color: red;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.car-remove').on('click', function () {
+            var currentCarId = $(this).attr('data-id');
+            var serviceURL = '@Url.Action("DeleteCar", "AddCar")' + '?carId=' + currentCarId;
+            
+            $.ajax({
+                type: "GET",
+                url: serviceURL,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: successFunc,
+                error: errorFunc
+            });
+
+            function successFunc(data) {
+                var carId = data.carId;
+                $('.car-data-' + carId).hide('slow');
+            }
+
+            function errorFunc(jqXHR, exception) {
+
+            }
+        });
+    });
+</script>
 
 

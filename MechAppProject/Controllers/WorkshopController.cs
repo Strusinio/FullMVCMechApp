@@ -89,6 +89,7 @@ namespace MechAppProject.Controllers
                     {
                         var workshopServiceModel = new WorkshopServiceModel()
                         {
+                            ServiceId = workshopService.ServiceId,
                             WorkshopId = session.WorkshopId,
                             Title = workshopService.Title,
                             Description = workshopService.Description,
@@ -140,6 +141,19 @@ namespace MechAppProject.Controllers
             int pageNumber = (page ?? 1);
 
             return View(eventsView.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult DeleteWorkshopService(int workshopServiceId)
+        {
+            using (var db = new MechAppProjectEntities())
+            {
+                var service = db.WorkshopServices.First(x => x.ServiceId == workshopServiceId);
+
+                db.WorkshopServices.Remove(service);
+                db.SaveChanges();
+            }
+
+            return Json(new { success = true, workshopServiceId = workshopServiceId }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DisplayWorkshopEvents(string sortOrder, string currentFilter, string searchString, int? page)

@@ -39,7 +39,7 @@
 
                         @foreach (var workshopService in Model)
                         {
-                            <tr>
+                            <tr class="workshop-service-data-@workshopService.ServiceId">
                                 <td>
                                     <div>
                                         @workshopService.Title
@@ -64,9 +64,13 @@
                                         @workshopService.DurationInHours h @workshopService.DurationInMinutes min
                                     </div>
                                 </td>
+                                <td>
+                                    <span class="workshop-service-remove" data-id="@workshopService.ServiceId">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </span>
+                                </td>
                             </tr>
-
-
+                            
                         }
 
                     </table>
@@ -75,7 +79,7 @@
                     @Html.PagedListPager(Model, page => Url.Action("YourServices", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div class="form-group align-content-end">
@@ -84,4 +88,43 @@
         </div>
     </div>
 </div>
+
+<style>
+    .workshop-service-remove {
+        cursor: pointer;
+        transition: 0.2s;
+        font-size: 20px;
+    }
+
+        .workshop-service-remove:hover {
+            color: red;
+        }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.workshop-service-remove').on('click', function () {
+            var currentWorkshopServiceId = $(this).attr('data-id');
+            var serviceURL = '@Url.Action("DeleteWorkshopService", "Workshop")' + '?workshopServiceId=' + currentWorkshopServiceId;
+
+            $.ajax({
+                type: "GET",
+                url: serviceURL,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: successFunc,
+                error: errorFunc
+            });
+
+            function successFunc(data) {
+                var workshopServiceId = data.workshopServiceId;
+                $('.workshop-service-data-' + workshopServiceId).hide('slow');
+            }
+
+            function errorFunc(jqXHR, exception) {
+
+            }
+        });
+    });
+</script>
 

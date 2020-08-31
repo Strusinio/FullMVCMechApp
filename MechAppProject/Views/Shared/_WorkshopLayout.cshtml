@@ -27,15 +27,15 @@
     <div id="content-wrapper" class="d-flex flex-column">
 
     <!-- Main Content -->
-    <div id="content">
+        <div id="content">
 
 
-    @Html.Partial("_topbarPartial")
+            @Html.Partial("_topbarPartial")
+            @Scripts.Render("~/bundles/WorkshopScripts")
 
+            @RenderBody()
 
-    @RenderBody()
-    
-    </div>
+        </div>
     <!-- End of Main Content -->
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
@@ -57,8 +57,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-
-    @Scripts.Render("~/bundles/WorkshopScripts")
     </body>
 
     </html>

@@ -28,5 +28,6 @@ namespace MechAppProject.Models
         [DisplayName("Czas trwania usługi (min)")]
         public int? DurationInMinutes { get; set; }
         public int WorkshopId { get; internal set; }
+        public int ServiceId { get; set; }
     }
 }
