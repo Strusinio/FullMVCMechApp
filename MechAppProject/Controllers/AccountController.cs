@@ -46,12 +46,6 @@ namespace MechAppProject.Controllers
                 }
 
                 objCustomer.Name = objCustomerModel.Name;
-                objCustomer.Surname = objCustomerModel.Surname;
-                objCustomer.City = objCustomerModel.City;
-                objCustomer.Street = objCustomerModel.Street;
-                objCustomer.StreetNbr = objCustomerModel.StreetNbr;
-                objCustomer.ZipCode = objCustomerModel.ZipCode;
-                objCustomer.PhoneNbr = objCustomerModel.PhoneNbr;
                 objMechAppProjectEntities.Customers.Add(objCustomer);
                 objMechAppProjectEntities.SaveChanges();
                 ModelState.Clear();
@@ -113,12 +107,7 @@ namespace MechAppProject.Controllers
                     model.Password = customer.Password;
                     model.Email = customer.Email;
                     model.Name = customer.Name;
-                    model.Surname = customer.Surname;
-                    model.City = customer.City;
-                    model.Street = customer.Street;
-                    model.StreetNbr = customer.StreetNbr;
-                    model.ZipCode = customer.ZipCode;
-                    model.PhoneNbr = customer.PhoneNbr;
+                    
                 }
             }
 
@@ -140,12 +129,7 @@ namespace MechAppProject.Controllers
                     model.Password = customer.Password;
                     model.Email = customer.Email;
                     model.Name = customer.Name;
-                    model.Surname = customer.Surname;
-                    model.City = customer.City;
-                    model.Street = customer.Street;
-                    model.StreetNbr = customer.StreetNbr;
-                    model.ZipCode = customer.ZipCode;
-                    model.PhoneNbr = customer.PhoneNbr;
+                   
                 }
                 return View(model);
             }
@@ -167,13 +151,7 @@ namespace MechAppProject.Controllers
                     customerModel.Password = model.Password;
                     customerModel.Email = model.Email;
                     customerModel.Name = model.Name;
-                    customerModel.Surname = model.Surname;
-                    customerModel.City = model.City;
-                    customerModel.Street = model.Street;
-                    customerModel.StreetNbr = model.StreetNbr;
-                    customerModel.ZipCode = model.ZipCode;
-                    customerModel.PhoneNbr = model.PhoneNbr;
-
+                  
                     db.SaveChanges();
                 }
             }

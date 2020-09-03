@@ -85,42 +85,7 @@
                                                     @Model.Name
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    @Html.LabelFor(model => model.Surname)
-                                                    @Model.Surname
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    @Html.LabelFor(model => model.City)
-                                                    @Model.City
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    @Html.LabelFor(model => model.Street)
-                                                    @Model.Street
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    @Html.LabelFor(model => model.StreetNbr)
-                                                    @Model.StreetNbr
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    @Html.LabelFor(model => model.ZipCode)
-                                                    @Model.ZipCode
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    @Html.LabelFor(model => model.PhoneNbr)
-                                                    @Model.PhoneNbr
-                                                </td>
-                                            </tr>
+                                                                                        
                                         </table>
 
                                     </div><!--/tab-pane-->
@@ -139,12 +104,7 @@
                                                             @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.Surname)
-                                                        <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.Surname, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
+                                                   
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.Password)
                                                         <div class="col-xs-12">
@@ -156,37 +116,8 @@
                                                         <div class="col-xs-12">
                                                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.City)
-                                                        <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.Street)
-                                                        <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.Street, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.StreetNbr)
-                                                        <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.StreetNbr, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.ZipCode)
-                                                        <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.PhoneNbr)
-                                                        <div class="col-xs-12">
-                                                            @Html.TextBoxFor(model => model.PhoneNbr, new { @class = "form-control" })
-                                                        </div>
-                                                    </div>
+                                                    </div>                                                                                                  
+                                                    
                                                 </fieldset>
                                                 @*<fieldset class="fieldset">
                                                     <h3 class="fieldset-title">Contact Info</h3>
@@ -215,15 +146,9 @@
                                                 <fieldset class="fieldset">
                                                     <h3 class="fieldset-title">Zmiana hasła</h3>
 
-                                                    @Html.HiddenFor(model => model.Name)
-                                                    @Html.HiddenFor(model => model.Surname)
-                                                    @Html.HiddenFor(model => model.Email)
-                                                    @Html.HiddenFor(model => model.City)
-                                                    @Html.HiddenFor(model => model.Street)
-                                                    @Html.HiddenFor(model => model.StreetNbr)
-                                                    @Html.HiddenFor(model => model.ZipCode)
-                                                    @Html.HiddenFor(model => model.PhoneNbr)
-
+                                                    @Html.HiddenFor(model => model.Name)                                                    
+                                                    @Html.HiddenFor(model => model.Email)                                                    
+                                                    
                                                     <div class="form-group">
                                                         Nowe hasło
                                                         <div class="col-xs-12">

@@ -25,12 +25,12 @@ namespace MechAppProject.DBModule
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Workshop> Workshops { get; set; }
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<ServiceEvent> ServiceEvents { get; set; }
         public virtual DbSet<WorkshopDescription> WorkshopDescriptions { get; set; }
         public virtual DbSet<WorkshopService> WorkshopServices { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
     }
 }

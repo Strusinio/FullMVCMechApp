@@ -28,12 +28,6 @@
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="StreetNbr" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ZipCode" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="PhoneNbr" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ServiceEvents">
     <Key>

@@ -21,7 +21,7 @@ namespace MechAppProject.DBModule
         public System.DateTime EndDate { get; set; }
         public int OrderStatus { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual WorkshopService WorkshopService { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
